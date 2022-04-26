@@ -1,0 +1,49 @@
+@import url(../vendor/normalize.css);
+@import url(../fonts/fonts.css);
+@import url(../blocks/page/page.css);
+@import url(../script/script.js);
+
+
+/*header*/
+@import url(../blocks/header/header.css);
+@import url(../blocks/header/__logo/header__logo.css);
+@import url(../blocks/header/__line/header__line.css);
+@import url(../blocks/header/__line/_size/header__line_size_s.css);
+@import url(../blocks/header/__line/_size/header__line_size_l.css);
+
+/*content*/
+@import url(../blocks/content/content.css);
+
+/*profile*/
+@import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__image/profile__image.css);
+@import url(../blocks/profile/__info-box/profile__info-box.css);
+@import url(../blocks/profile/__box-button/profile__box-button.css);
+@import url(../blocks/profile/__title/profile__title.css);
+@import url(../blocks/profile/__subtitle/profile__subtitle.css);
+@import url(../blocks/profile/__add-button/profile__add-button.css);
+@import url(../blocks/profile/__add-button-pen/profile__add-button-pen.css);
+@import url(../blocks/profile/__add-button/_active/profile__add-button_active.css);
+@import url(../blocks/profile/__add-button/_disabled/profile__add-button_disabled.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
+@import url(../blocks/profile/__edit-button-pen/profile__edit-button-pen.css);
+@import url(../blocks/profile/__edit-button/active/profile__edit-button_active.css);
+@import url(../blocks/profile/__edit-button/_disabled/profile__add-button_disabled.css);
+
+/*cards*/
+@import url(../blocks/cards/cards.css);
+
+/*card*/
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__card-container/card__card-container.css);
+@import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
+@import url(../blocks/card/__like/_disabled/card__like_disabled.css);
+@import url(../blocks/card/__like/_hover/card__like_hover.css);
+
+
+/*footer*/
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);

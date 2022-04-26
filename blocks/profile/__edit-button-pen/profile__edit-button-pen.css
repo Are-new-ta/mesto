@@ -1,0 +1,9 @@
+.profile__edit-button-pen {
+  background-image: url(../../../images/pen.svg);
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+}

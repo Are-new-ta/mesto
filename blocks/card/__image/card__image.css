@@ -1,0 +1,9 @@
+.card__image {
+  /*grid-area: place__image;*/
+  box-sizing: border-box;
+  object-fit: contain;
+  object-position: center top;
+  max-width: 282px;
+  margin: 0;
+  padding: 0; 
+}

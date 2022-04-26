@@ -1,0 +1,8 @@
+.profile {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 2px solid khaki;
+}
