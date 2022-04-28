@@ -5,5 +5,7 @@ line-height: 1.8rem;
 color: #000000;
 margin: 25px 0 30px;
 padding: 0;
-border: 2px solid rebeccapurple;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
 }

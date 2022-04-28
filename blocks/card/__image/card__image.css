@@ -1,9 +1,9 @@
 .card__image {
-  /*grid-area: place__image;*/
   box-sizing: border-box;
-  object-fit: contain;
-  object-position: center top;
-  max-width: 282px;
+  object-fit: cover;
+  width: 282px;
+  height: 282px;
   margin: 0;
-  padding: 0; 
-}
+  padding: 0;
+  border-radius: 10px 10px 0 0;
+  }

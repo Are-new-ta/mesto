@@ -1,6 +1,7 @@
 .card__like {
   background-image: url(../../../images/like_disabled.svg);
   background-repeat: no-repeat;
-  width: 20px;
+  width: 30px;
   height: 22px;
+  cursor: pointer;
 }

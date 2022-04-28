@@ -11,5 +11,5 @@
   height: 50px;
   box-sizing: border-box;
   border: 2px solid #FFFFFF;
-
+  cursor: pointer;
 }
