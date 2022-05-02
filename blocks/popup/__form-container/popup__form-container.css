@@ -1,0 +1,12 @@
+.popup__form-container {
+  position: relative;
+  width: 430px;
+  height: 330px;
+  background: white;
+  color: black;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+ }
+
