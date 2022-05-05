@@ -7,4 +7,42 @@
   box-sizing: border-box;
   margin: 51px 0 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
 }
+
+@media screen and (max-width: 630px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    max-height: min-content;
+    gap: 20px 0;
+    margin: 36px auto 0;
+
+  }
+}
+
+@media screen and (min-width: 630px) and (max-width: 768px){
+  .cards {
+    width: 100%;
+    grid-template-columns: repeat(2, 282px);
+  }
+}
+
+
+
+
+/*@media screen and (max-width: 767px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    max-height: min-content;
+    gap: 20px 0;
+    margin: 36px auto 0;
+    align-items: center;
+    justify-content: center;
+
+  }
+}*/

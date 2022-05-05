@@ -5,3 +5,9 @@
   box-sizing: border-box;
   max-width: 120px;
 }
+
+@media screen and (max-width: 425px) {
+  .profile__image {    
+   margin: 0 auto;
+}
+}
