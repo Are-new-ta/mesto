@@ -1,8 +1,20 @@
 .popup__form-text {
-  opacity: 0.2;
-  border: 1px solid #000000;
   width: 100%;
   min-height: 27px;
   margin: 30px 0 0;
   padding: 0;
- }
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.06rem;
+  color: #000000;
+   }
+
+   @media screen and (max-width: 425px) {
+    .popup__form-text {
+      width: 238px;
+  }
+  }
+
