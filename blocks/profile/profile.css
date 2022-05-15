@@ -4,14 +4,13 @@
   position: relative;
   align-items: center;
   box-sizing: border-box;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
 @media screen and (max-width: 768px) {
   .profile {
    flex-direction: column;
-   margin: 0 auto;
 }
 }
 
@@ -22,8 +21,3 @@
 }
 }
 
-/*@media screen and (max-width: 425px) {
-  .profile {    
-   flex-direction: column;
-}
-}*/

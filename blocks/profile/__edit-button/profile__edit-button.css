@@ -8,6 +8,11 @@
   height: 24px;
   background: none;
   box-shadow: none;
+  background-image: url(../../../images/pen.svg);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: 10px;
   box-sizing: border-box;
   border: 1px solid #FFFFFF;
   cursor: pointer;
@@ -19,3 +24,4 @@
     height: 18px;   
   }
 }
+
