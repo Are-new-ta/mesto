@@ -14,6 +14,11 @@ position: absolute;
   cursor: pointer;
 }
 
+.popup__button-close:hover {
+  opacity: 0.6;
+}
+
+
 @media screen and (max-width: 425px) {
   .popup__button-close {
     background-image: url(../../../images/Close\ Icon_320px.svg);

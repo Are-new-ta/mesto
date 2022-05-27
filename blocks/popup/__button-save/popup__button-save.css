@@ -4,6 +4,7 @@
   line-height: 1.38rem;
   text-align: center;
   box-shadow: none;
+  border: none;
   color: #FFFFFF;
   background: black;
   width: 358px;
@@ -11,6 +12,10 @@
   margin: 48px auto 0;
   padding: 0;
   cursor: pointer;
+}
+
+.popup__button-save:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 425px) {

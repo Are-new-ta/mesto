@@ -1,8 +1,48 @@
 .profile__add-button {
   display: flex;
+  position: relative;
+  background: none;
+  box-shadow: none;
+  width: 150px;
+  height: 50px;
+  box-sizing: border-box;
+  border: 2px solid #FFFFFF;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  background-image: url(../../../images/add_1280.png);
+  background-repeat: no-repeat;
+  background-size: 22px;
+  background-position-x: center;
+  background-position-y: center;
+   }
+
+ .profile__add-button:hover {
+   opacity: 0.6;
+ }
+
+@media screen and (max-width: 425px) {
+  .profile__add-button {
+    position: relative;
+    margin-top: 0;
+    width: 282px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px){
+  .profile__add-button {
+    position: relative;
+    margin-top: 0;
+    width: 252px;
+  }
+}
+
+
+/*до корректировок от ревьюера, было замечание по поводу абсолютного позиционирования
+.profile__add-button {
+  display: flex;
   position: absolute;
   right: 0;
-  /*top: 30px;*/
   justify-content: center;
   align-items: center;
   background: none;
@@ -36,6 +76,4 @@
     margin-top: 0;
     width: 252px;
   }
-}
-
-
+}*/

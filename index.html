@@ -15,7 +15,6 @@
   <!-- header -->
   <header class="header">
     <div class="header__logo"></div>
-    <div class="header__line header__line_size_s header__line_size_l"></div>
   </header>
 
   <main class="content">
@@ -24,14 +23,13 @@
       <img src="./images/image.jpg" alt="Жан-Ив Кусто" class="profile__image">
       <div class="profile__info-box">
         <div class="profile__box-button">
-          <h1 class="profile__title">Жан-Ив Кусто </h1>
-          <button class="profile__edit-button profile__edit-button_disabled profile__edit-button_active">
+          <h1 class="profile__title">Жан-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button" name="profileAditButton" aria-label="Редактировать">
           </button>
         </div>
         <p class="profile__subtitle">Исследователь океана</p>
       </div>
-
-      <button class="profile__add-button profile__add-button_disabled profile__add-button_active">
+      <button class="profile__add-button" type="button" name="profileAddButton" aria-label="Добавить">
       </button>
     </section>
 
@@ -42,7 +40,7 @@
         <img src="./images/photo-grid-baikal-2.jpg" alt="Байкал" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Байкал</h2>
-          <div class="card__like card__like_disabled card__like_hover card__like_active"></div>
+          <button class="card__like" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -51,7 +49,7 @@
         <img src="./images/photo-grid-kamchatka-1.jpg" alt="Камчатка" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Камчатка</h2>
-          <div class="card__like card__like_disabled card__like_hover card__like_active"></div>
+          <button class="card__like" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -60,7 +58,7 @@
         <img src="./images/photo-grid-elbrus.jpg" alt="Гора Эльбрус" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Гора Эльбрус</h2>
-          <div class="card__like card__like_disabled card__like_hover card__like_active"></div>
+          <button class="card__like" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -69,7 +67,7 @@
         <img src="./images/photo-grid-ergaki.jpg" alt="Карачаево-Черкесия" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Карачаево - Черкесия</h2>
-          <div class="card__like card__like_disabled card__like_hover card__like_active"></div>
+          <button class="card__like" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -78,7 +76,7 @@
         <img src="./images/place-kosa.jpg" alt="Куршская коса" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Куршская коса</h2>
-          <div class="card__like card__like_disabled card__like_hover card__like_active"></div>
+          <button class="card__like" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -87,12 +85,40 @@
         <img src="./images/place-karelia.jpg" alt="Карелия" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Карелия</h2>
-          <div class="card__like card__like_disabled card__like_hover card__like_active"></div>
+          <button class="card__like" aria-label="Like" type="button"></button>
         </div>
       </article>
     </section>
   </main>
 
+  <!--footer-->
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2022. Mesto Russia</p>
+  </footer>
+
+  <!--popup-->
+  <div class="popup">
+    <form class="popup__form-container" name="popupForm" method="post">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <fieldset class="popup__form">
+        <input type="text" name="popupName" id="popupName" placeholder="Имя" class="popup__text">
+        <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__text">
+        <input class="popup__button-save" type="submit" value="Сохранить">
+      </fieldset>
+      <button class="popup__button-close" name="popupButtonClose" type="button" aria-label="Закрыть"></button>
+    </form>
+
+  </div>
+
+  <script src="./script/script.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!--popup до корректировок
   <form class="popup">
     <div class="popup__form-container">
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -101,18 +127,21 @@
         <input type="text" name="popupJob" placeholder="Профессия" value="Исследователь океана"
           class="popup__form-text popup__text">
         <input class="popup__button-save" type="submit" value="Сохранить">
-        <button class="popup__button-close"></button>
+        <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
       </fieldset>
     </div>
-    <!--<button class="popup__button-close"></button>-->
-  </form>
+      </form>-->
 
-
-  <!--footer-->
-  <footer class="footer">
-    <p class="footer__copyright">&copy; 2022. Mesto Russia</p>
-  </footer>
-  <script src="./script/script.js"></script>
-</body>
-
-</html>
+<!--popup после корректировок, но запуталась с марджинами и псевдоклассами
+      <div class="popup">
+        <form class="popup__form-container" name="popupForm" method="post">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <fieldset class="popup__form">
+            <input type="text" name="popupName" id="popupName" placeholder="Имя" class="popup__form-name popup__text">
+            <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__form-text popup__text">
+            <input class="popup__button-save" type="submit" value="Сохранить">
+            <button class="popup__button-close" name="popupButtonClose" type="button" aria-label="Закрыть"></button>
+          </fieldset>
+        </form>
+    
+      </div>
