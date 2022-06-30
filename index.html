@@ -16,18 +16,20 @@
   <header class="header">
     <div class="header__logo"></div>
   </header>
-
   <main class="content">
+
     <!--Profile-->
     <section class="profile">
-      <img src="./images/image.jpg" alt="Жан-Ив Кусто" class="profile__image">
-      <div class="profile__info-box">
-        <div class="profile__box-button">
-          <h1 class="profile__title">Жан-Ив Кусто</h1>
-          <button class="profile__edit-button" type="button" name="profileAditButton" aria-label="Редактировать">
-          </button>
+      <div class="profile__container">
+        <img src="./images/image.jpg" alt="Жан-Ив Кусто" class="profile__image">
+        <div class="profile__info-box">
+          <div class="profile__box-button">
+            <h1 class="profile__title">Жан-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button" name="profileAditButton" aria-label="Редактировать">
+            </button>
+          </div>
+          <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <p class="profile__subtitle">Исследователь океана</p>
       </div>
       <button class="profile__add-button" type="button" name="profileAddButton" aria-label="Добавить">
       </button>
@@ -101,8 +103,8 @@
     <form class="popup__form-container" name="popupForm" method="post">
       <h2 class="popup__title">Редактировать профиль</h2>
       <fieldset class="popup__form">
-        <input type="text" name="popupName" id="popupName" placeholder="Имя" class="popup__text">
-        <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__text">
+        <input type="text" name="popupName" id="popupName" placeholder="Имя" class="popup__name">
+        <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__job">
         <input class="popup__button-save" type="submit" value="Сохранить">
       </fieldset>
       <button class="popup__button-close" name="popupButtonClose" type="button" aria-label="Закрыть"></button>
@@ -114,34 +116,3 @@
 </body>
 
 </html>
-
-
-
-
-<!--popup до корректировок
-  <form class="popup">
-    <div class="popup__form-container">
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <fieldset class="popup__form">
-        <input type="text" name="popupName" placeholder="Имя" value="Жак-Ив Кусто" class="popup__form-name popup__text">
-        <input type="text" name="popupJob" placeholder="Профессия" value="Исследователь океана"
-          class="popup__form-text popup__text">
-        <input class="popup__button-save" type="submit" value="Сохранить">
-        <button class="popup__button-close" type="button" aria-label="Закрыть"></button>
-      </fieldset>
-    </div>
-      </form>-->
-
-<!--popup после корректировок, но запуталась с марджинами и псевдоклассами
-      <div class="popup">
-        <form class="popup__form-container" name="popupForm" method="post">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <fieldset class="popup__form">
-            <input type="text" name="popupName" id="popupName" placeholder="Имя" class="popup__form-name popup__text">
-            <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__form-text popup__text">
-            <input class="popup__button-save" type="submit" value="Сохранить">
-            <button class="popup__button-close" name="popupButtonClose" type="button" aria-label="Закрыть"></button>
-          </fieldset>
-        </form>
-    
-      </div>
