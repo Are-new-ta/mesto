@@ -1,0 +1,14 @@
+.card__like_active {
+  background: none;
+   background-repeat: no-repeat;
+   box-shadow: none;
+   border: none;
+   width: 30px;
+   height: 22px;
+   background-image: url(../../../../images/like_active.svg);
+   cursor: pointer;
+ }
+
+ .card__like_active:hover {
+  opacity: 0.5;
+}

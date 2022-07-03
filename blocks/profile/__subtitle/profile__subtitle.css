@@ -7,9 +7,9 @@
   color: #FFFFFF;
   width: 100%;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
   overflow: hidden;
- }
+}
 
 @media screen and (max-width: 425px) {
   .profile__subtitle {
@@ -22,7 +22,7 @@
   }
 }
 
-@media screen and (min-width: 426px) and (max-width: 768px){
+@media screen and (min-width: 426px) and (max-width: 768px) {
   .profile__subtitle {
     font-size: 16px;
     line-height: 1.1rem;

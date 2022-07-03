@@ -42,7 +42,7 @@
         <img src="./images/photo-grid-baikal-2.jpg" alt="Байкал" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Байкал</h2>
-          <button class="card__like" aria-label="Like" type="button"></button>
+          <button class="card__like card__like_active" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -51,7 +51,7 @@
         <img src="./images/photo-grid-kamchatka-1.jpg" alt="Камчатка" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Камчатка</h2>
-          <button class="card__like" aria-label="Like" type="button"></button>
+          <button class="card__like card__like_active" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -60,7 +60,7 @@
         <img src="./images/photo-grid-elbrus.jpg" alt="Гора Эльбрус" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Гора Эльбрус</h2>
-          <button class="card__like" aria-label="Like" type="button"></button>
+          <button class="card__like card__like_active" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -69,7 +69,7 @@
         <img src="./images/photo-grid-ergaki.jpg" alt="Карачаево-Черкесия" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Карачаево - Черкесия</h2>
-          <button class="card__like" aria-label="Like" type="button"></button>
+          <button class="card__like card__like_active" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -78,7 +78,7 @@
         <img src="./images/place-kosa.jpg" alt="Куршская коса" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Куршская коса</h2>
-          <button class="card__like" aria-label="Like" type="button"></button>
+          <button class="card__like card__like_active" aria-label="Like" type="button"></button>
         </div>
       </article>
 
@@ -87,7 +87,7 @@
         <img src="./images/place-karelia.jpg" alt="Карелия" class="card__image">
         <div class="card__card-container">
           <h2 class="card__title">Карелия</h2>
-          <button class="card__like" aria-label="Like" type="button"></button>
+          <button class="card__like card__like_active" aria-label="Like" type="button"></button>
         </div>
       </article>
     </section>
@@ -100,16 +100,17 @@
 
   <!--popup-->
   <div class="popup">
-    <form class="popup__form-container" name="popupForm" method="post">
+    <div class="popup__form-container">
       <h2 class="popup__title">Редактировать профиль</h2>
-      <fieldset class="popup__form">
-        <input type="text" name="popupName" id="popupName" placeholder="Имя" class="popup__name">
-        <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__job">
-        <input class="popup__button-save" type="submit" value="Сохранить">
-      </fieldset>
+      <form class="popup__form" name="popupForm" method="post">
+        <input type="text" name="popupName" id="popupName" placeholder="Имя" class="popup__input popup__input_data_name"
+          required>
+        <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__input popup__input_data_job"
+          required>
+        <button class="popup__button-save" type="submit" value="Сохранить">Сохранть</button>
+      </form>
       <button class="popup__button-close" name="popupButtonClose" type="button" aria-label="Закрыть"></button>
-    </form>
-
+    </div>
   </div>
 
   <script src="./script/script.js"></script>

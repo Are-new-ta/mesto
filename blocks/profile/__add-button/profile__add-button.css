@@ -1,79 +1,41 @@
 .profile__add-button {
   display: flex;
-  position: relative;
+  /*position: relative;*/
   background: none;
   box-shadow: none;
   width: 150px;
   height: 50px;
   box-sizing: border-box;
   border: 2px solid #FFFFFF;
+  border-radius: 2px;
   cursor: pointer;
   margin: 0;
   padding: 0;
-  background-image: url(../../../images/add_1280.png);
+  background-image: url(../../../images/add_1280.svg);
   background-repeat: no-repeat;
   background-size: 22px;
   background-position-x: center;
   background-position-y: center;
-   }
+  transition: opacity .3s linear;
+}
 
- .profile__add-button:hover {
-   opacity: 0.6;
- }
+.profile__add-button:hover {
+  opacity: 0.6;
+}
 
 @media screen and (max-width: 425px) {
   .profile__add-button {
-    position: relative;
+    background-image: url(../../../images/add_320.svg);
+    /*position: relative;*/
     margin-top: 10px;
     width: 282px;
   }
 }
 
-@media screen and (min-width: 426px) and (max-width: 768px){
+@media screen and (min-width: 426px) and (max-width: 768px) {
   .profile__add-button {
-    position: relative;
+    /*position: relative;*/
     margin-top: 0;
     width: 252px;
   }
 }
-
-
-/*до корректировок от ревьюера, было замечание по поводу абсолютного позиционирования
-.profile__add-button {
-  display: flex;
-  position: absolute;
-  right: 0;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  box-shadow: none;
-  width: 150px;
-  height: 50px;
-  box-sizing: border-box;
-  border: 2px solid #FFFFFF;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  background-image: url(../../../images/add_1280.png);
-  background-repeat: no-repeat;
-  background-size: 22px;
-  background-position-x: center;
-  background-position-y: center;
-}
-
-
-@media screen and (max-width: 425px) {
-  .profile__add-button {
-    position: relative;
-    margin-top: 0;
-    width: 282px;
-  }
-}
-
-@media screen and (min-width: 426px) and (max-width: 768px){
-  .profile__add-button {
-    position: relative;
-    margin-top: 0;
-    width: 252px;
-  }
-}*/

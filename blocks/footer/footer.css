@@ -6,22 +6,22 @@
 
 @media screen and (max-width: 425px) {
   .footer {
-   max-width: 88%;
-   margin: 30px auto 36px;
-}
+    max-width: 88%;
+    margin: 30px auto 36px;
+  }
 }
 
 @media screen and (min-width: 426px) and (max-width: 900px) {
   .footer {
-  max-width: 85%;
-  align-items: center;
-  justify-content: center;
-}
+    max-width: 85%;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: 901px) and (max-width: 1024px) {
-  .footer { 
-  align-items: center;
-  justify-content: center;
-}
+  .footer {
+    align-items: center;
+    justify-content: center;
+  }
 }

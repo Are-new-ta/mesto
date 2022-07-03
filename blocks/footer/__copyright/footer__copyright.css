@@ -9,18 +9,16 @@
   justify-content: center;
 }
 
-
 @media screen and (max-width: 768px) {
-  .footer__copyright  {
+  .footer__copyright {
     font-size: 14px;
     line-height: 1.06rem;
     margin-top: 50px;
+  }
 }
-}
-
 
 @media screen and (min-width: 1279px) {
-  .footer__copyright  {
-   margin-top: 70px;
-}
+  .footer__copyright {
+    margin-top: 70px;
+  }
 }

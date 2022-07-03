@@ -1,4 +1,4 @@
-.popup__text {
+.popup__input {
   width: 100%;
   min-height: 27px;
   margin: 0;
@@ -12,15 +12,19 @@
   color: #000000;
 }
 
-.popup__text:nth-child(2) {
+.popup__input:focus {
+  cursor: pointer;
+}
+
+.popup__input:nth-child(2) {
   margin-top: 30px;
 
 }
 
 @media screen and (max-width: 425px) {
-  .popup__text {
+  .popup__input {
     width: 238px;
     align-items: center;
     justify-content: center;
-}
+  }
 }

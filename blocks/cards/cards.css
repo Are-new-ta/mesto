@@ -23,11 +23,8 @@
   }
 }
 
-@media screen and (min-width: 630px) and (max-width: 900px){
+@media screen and (min-width: 631px) and (max-width: 900px) {
   .cards {
-    width: 100%;
     grid-template-columns: repeat(auto-fill, 282px);
   }
 }
-
-

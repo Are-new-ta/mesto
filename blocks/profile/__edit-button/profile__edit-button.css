@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 20px;
+  margin-left: 18px;
+  margin-top: 12px;
   padding: 0;
   width: 24px;
   height: 24px;
@@ -16,6 +17,7 @@
   box-sizing: border-box;
   border: 1px solid #FFFFFF;
   cursor: pointer;
+  transition: opacity .3s linear;
 }
 
 .profile__edit-button:hover {
@@ -29,4 +31,3 @@
     margin-left: 7px;
   }
 }
-

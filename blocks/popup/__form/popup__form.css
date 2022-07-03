@@ -4,12 +4,11 @@
   margin: 0 auto 0;
   padding: 34px 0 37px;
   box-sizing: border-box;
-  }
+}
 
-  @media screen and (max-width: 425px) {
-    .popup__form {
-     width: 238px;
-     padding: 70px 0 0;
-    }
+@media screen and (max-width: 425px) {
+  .popup__form {
+    width: 238px;
+    padding: 70px 0 0;
   }
-
+}
