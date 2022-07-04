@@ -1,17 +1,18 @@
 .popup__form-container {
   position: relative;
   width: 430px;
+  max-height: 335px;
   background: white;
   color: black;
   border-radius: 10px;
   margin: 0;
-  padding: 0;
+  padding-top: 35px;
   box-sizing: border-box;
 }
 
 @media screen and (max-width: 425px) {
   .popup__form-container {
     width: 282px;
-    /* min-height: 322px;  Под макет подгоняйте отступами.*/
+    padding: 0;
   }
 }
