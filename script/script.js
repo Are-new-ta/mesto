@@ -6,12 +6,12 @@ const popup = document.querySelector('.popup');
 const closePopupButton = popup.querySelector('.popup__button-close');
 const popupInputName = popup.querySelector('.popup__input_data_name');
 const popupInputJob = popup.querySelector('.popup__input_data_job');
-const formElement = popup.querySelector('.popup__form-container');
+const formElement = popup.querySelector('.popup__container');
 
 //функция открытия с возможностью записывать новые данные в форму
 function openPopup() {
-  popupName.value = editProfileTitle.textContent;
-  popupJob.value = editProfileSubtitle.textContent;
+  popupInputName.value = editProfileTitle.textContent;
+  popupInputJob.value = editProfileSubtitle.textContent;
   popup.classList.add('popup_opened');
 }
 

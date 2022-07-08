@@ -11,6 +11,7 @@
   height: 50px;
   margin: 50px auto 0;
   padding: 0;
+  border-radius: 2px;
   cursor: pointer;
   transition: opacity .3s linear;
 }
