@@ -1,6 +1,6 @@
 .popup__button-close {
   position: absolute;
-  top: -45px;
+  top: -40px;
   right: -40px;
   box-shadow: none;
   border: none;
@@ -22,8 +22,8 @@
 @media screen and (max-width: 425px) {
   .popup__button-close {
     background-size: 22px 22px;
-    top: -30px;
-    right: 0;
+    top: -38px;
+    right: -10px;
   }
 }
 
