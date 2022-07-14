@@ -15,9 +15,3 @@
 .card__like:hover {
   opacity: 0.5;
 }
-
-@media screen and (max-width: 425px) {
-  .card__like {
-    margin: 0;
-  }
-}

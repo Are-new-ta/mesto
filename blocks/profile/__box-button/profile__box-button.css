@@ -1,15 +1,7 @@
 .profile__box-button {
   display: flex;
-  /*flex-direction: row;Это значение по умолчанию, его лучше удалить*/
   align-items: center;
-  /*min-height: 1.14rem;*/
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
-
-@media screen and (max-width: 425px) {
-  .profile__box-button {
-    /*min-height: 26px;*/
-  }
 }
