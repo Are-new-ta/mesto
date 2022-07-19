@@ -13,6 +13,7 @@
   background-repeat: no-repeat;
   cursor: pointer;
   transition: opacity .5s linear;
+  z-index: 3;
 }
 
 .popup__button-close:hover {

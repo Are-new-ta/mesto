@@ -36,60 +36,8 @@
     </section>
 
     <!--cards -->
-    <!--Байкал -->
+    <!--Архыз -->
     <section class="cards">
-      <article class="card">
-        <img src="./images/photo-grid-baikal-2.jpg" alt="Байкал" class="card__image">
-        <div class="card__card-container">
-          <h2 class="card__title">Байкал</h2>
-          <button class="card__like" aria-label="Нравится" type="button"></button>
-        </div>
-      </article>
-
-      <!--Камчатка-->
-      <article class="card">
-        <img src="./images/photo-grid-kamchatka-1.jpg" alt="Камчатка" class="card__image">
-        <div class="card__card-container">
-          <h2 class="card__title">Камчатка</h2>
-          <button class="card__like" aria-label="Нравится" type="button"></button>
-        </div>
-      </article>
-
-      <!--Гора Эльбрус -->
-      <article class="card">
-        <img src="./images/photo-grid-elbrus.jpg" alt="Гора Эльбрус" class="card__image">
-        <div class="card__card-container">
-          <h2 class="card__title">Гора Эльбрус</h2>
-          <button class="card__like" aria-label="Нравится" type="button"></button>
-        </div>
-      </article>
-
-      <!--Карачаево - Черкесия -->
-      <article class="card">
-        <img src="./images/photo-grid-ergaki.jpg" alt="Карачаево-Черкесия" class="card__image">
-        <div class="card__card-container">
-          <h2 class="card__title">Карачаево - Черкесия</h2>
-          <button class="card__like" aria-label="Нравится" type="button"></button>
-        </div>
-      </article>
-
-      <!--Куршская коса-->
-      <article class="card">
-        <img src="./images/place-kosa.jpg" alt="Куршская коса" class="card__image">
-        <div class="card__card-container">
-          <h2 class="card__title">Куршская коса</h2>
-          <button class="card__like" aria-label="Нравится" type="button"></button>
-        </div>
-      </article>
-
-      <!--Карелия-->
-      <article class="card">
-        <img src="./images/place-karelia.jpg" alt="Карелия" class="card__image">
-        <div class="card__card-container">
-          <h2 class="card__title">Карелия</h2>
-          <button class="card__like" aria-label="Нравится" type="button"></button>
-        </div>
-      </article>
     </section>
   </main>
 
@@ -97,6 +45,18 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2022.Mesto Russia</p>
   </footer>
+
+  <!--template-->
+  <template class="template-card">
+    <article class="card">
+      <button class="card__delete" aria-label="Удалить" type="button"></button>
+      <img src="" alt="Архыз" class="card__image">
+      <div class="card__card-container">
+        <h2 class="card__title"></h2>
+        <button class="card__like" aria-label="Нравится" type="button"></button>
+      </div>
+    </article>
+  </template>
 
   <!--popup-->
   <div class="popup">
@@ -112,7 +72,69 @@
       <button class="popup__button-close" name="popupButtonClose" type="button" aria-label="Закрыть"></button>
     </div>
   </div>
+
+
+  <!--popupAddCard-->
+  <div class="popup popup_data_card">
+    <div class="popup__container popup__container_data_card">
+      <h2 class="popup__title popup__title_data_card">Новое место </h2>
+      <form class="popup__form popup__form_data_card" name="popupForm" method="post">
+        <input type="text" name="popupNameCard" id="popupNameCard" placeholder="Название" value=""
+          class="popup__input popup__input_data_name-card" required>
+        <input type="url" name="popupLink" id="popupLink" placeholder="Ссылка на картинку" value=""
+          class="popup__input popup__input_data_link" required>
+        <button class="popup__button-save popup__button-save_data_card" type="submit"
+          value="Сохранить">Сохранить</button>
+      </form>
+      <button class="popup__button-close popup__button-close_data_card" name="popupButtonClose" type="button"
+        aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+  <!--popupImage-->
+  <div class="popup popup_data_image">
+    <div class="popup__container-image">
+      <button class="popup__button-close popup__button-close_data_image" name="popupButtonClose" type="button"
+        aria-label="Закрыть"></button>
+      <figure class="popup__image-box">
+        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз"
+          class="popup__image">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
+  </div>
   <script src="./script/script.js"></script>
 </body>
 
 </html>
+
+
+
+
+<!--
+  <div class="popup_data_image">
+    <div class="popup__container-image">
+      <button class="popup__button-close popup__button-close_data_image" name="popupButtonClose" type="button"
+        aria-label="Закрыть"></button>
+      <figure class="popup__image-box">
+        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз"
+          class="popup__image ">
+        <figcaption class="popup__caption"></figcaption>
+      </figure>
+    </div>
+  </div>-->
+
+
+
+
+<!--popupImage
+   <div class="popup_data_image">
+    <div class="popup__container-image">
+      <button class="popup__button-close popup__button-close_data_image" name="popupButtonClose" type="button"
+        aria-label="Закрыть"></button>
+      <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз"
+        class="popup__image ">
+      <h3 class="popup__caption"></h3>
+
+    </div>
+  </div>-->

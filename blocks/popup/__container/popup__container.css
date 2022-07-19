@@ -5,6 +5,8 @@
   color: black;
   border-radius: 10px;
   padding-top: 35px;
+  /*new*/
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
