@@ -5,7 +5,8 @@ const selector = {
   subtitleProfile: '.profile__subtitle',
   addCardButton: '.profile__add-button',
   popup: '.popup',
-  popupOpen: 'popup_opened',
+  popupProfile: '.popup_data_profile',
+  popupOpen: '.popup_opened',
   closePopupButton: '.popup__button-close',
   popupInputName: '.popup__input_data_name',
   popupInputJob: '.popup__input_data_job',
@@ -31,14 +32,14 @@ const selector = {
 }
 
 //для popupProfile
-const openPopupButton = document.querySelector(selector.editButtonProfile);
+const openPopupProfileBtn = document.querySelector(selector.editButtonProfile);
 const editProfileTitle = document.querySelector(selector.titleProfile);
 const editProfileSubtitle = document.querySelector(selector.subtitleProfile);
-const popup = document.querySelector(selector.popup);
-const closePopupButton = popup.querySelector(selector.closePopupButton);
-const popupInputName = popup.querySelector(selector.popupInputName);
-const popupInputJob = popup.querySelector(selector.popupInputJob);
-const formElement = popup.querySelector(selector.popupContainer);
+const popupProfile = document.querySelector(selector.popupProfile);
+const closePopupProfileButton = popupProfile.querySelector(selector.closePopupButton);
+const popupInputName = popupProfile.querySelector(selector.popupInputName);
+const popupInputJob = popupProfile.querySelector(selector.popupInputJob);
+const formProfileElement = popupProfile.querySelector(selector.popupContainer);
 //для popupCard
 const popupCard = document.querySelector(selector.popupCard);
 const addCardButton = document.querySelector(selector.addCardButton);
@@ -46,6 +47,7 @@ const popupCardInputName = popupCard.querySelector(selector.popupCardInputName);
 const popupCardInputLink = popupCard.querySelector(selector.popupCardInputLink);
 const popupContainerCard = popupCard.querySelector(selector.popupContainerCard);
 const closePopupCardButton = popupCard.querySelector(selector.closePopupCardButton);
+const cards = document.querySelector(selector.cardsSpace);
 const templateCard = document.querySelector(selector.templateCard);
 const createTemplateCard = templateCard.content.querySelector(selector.card).cloneNode(true);
 const cardImage = createTemplateCard.querySelector(selector.imageCard);
@@ -53,6 +55,9 @@ const cardTitle = createTemplateCard.querySelector(selector.cardTitle);
 const likeButton = createTemplateCard.querySelector(selector.likeButton);
 const imageCaption = document.querySelector(selector.imageCaption);
 const imagePopup = document.querySelector(selector.imagePopup);
+//const popupImage = document.querySelector(selector.popupImage);
+//const closePopupImagedButton = popupImage.querySelector(selector.closePopupImagedButton);
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -80,51 +85,43 @@ const initialCards = [
   }
 ];
 
+
+//общие функции открытия и закрытия 
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
 //popupProfile
 function openPopupProfile() {
   popupInputName.value = editProfileTitle.textContent;
   popupInputJob.value = editProfileSubtitle.textContent;
-  popup.classList.add(selector.popupOpen);
+  openPopup(popupProfile);
 }
 
-function closePopup() {
-  popup.classList.remove(selector.popupOpen);
-  popupCard.classList.remove(selector.popupOpen);
-}
-
-function formSubmitHandler(evt) {
+function HandlerProfileFormSubmit(evt) {
   evt.preventDefault();
   editProfileTitle.textContent = popupInputName.value;
   editProfileSubtitle.textContent = popupInputJob.value;
-  closePopup();
+  closePopup(popupProfile);
 }
 
-openPopupButton.addEventListener('click', openPopupProfile);
-closePopupButton.addEventListener('click', closePopup);
-formElement.addEventListener('submit', formSubmitHandler);
+openPopupProfileBtn.addEventListener('click', openPopupProfile);
+closePopupProfileButton.addEventListener('click', () => closePopup(popupProfile));
+formProfileElement.addEventListener('submit', HandlerProfileFormSubmit);
 
 //popupImage
 const popupImage = document.querySelector(selector.popupImage);
 const closePopupImagedButton = popupImage.querySelector(selector.closePopupImagedButton);
-
-function openPopupImage() {
-  popupImage.classList.add(selector.popupOpen);
-}
-
-function closePopupImage() {
-  popupImage.classList.remove(selector.popupOpen);
-}
-
-cardImage.addEventListener('click', openPopupImage);
-closePopupImagedButton.addEventListener('click', closePopupImage);
+cardImage.addEventListener('click', () => openPopup(popupImage));
+closePopupImagedButton.addEventListener('click', () => closePopup(popupImage));
 
 //popupCard
-function openPopupCard() {
-  popupCard.classList.add(selector.popupOpen);
-}
-
-addCardButton.addEventListener('click', openPopupCard);
-closePopupCardButton.addEventListener('click', closePopup);
+addCardButton.addEventListener('click', () => openPopup(popupCard));
+closePopupCardButton.addEventListener('click', () => closePopup(popupCard));
 
 //создание карточки
 function createCard(item) {
@@ -149,7 +146,7 @@ function createCard(item) {
   });
 
   cardImage.onclick = function () {
-    openPopupImage();
+    openPopup(popupImage);
     imagePopup.src = item.link;
     imagePopup.alt = item.name;
     imageCaption.textContent = item.name;
@@ -160,32 +157,26 @@ function createCard(item) {
 function handlePopupCardFormSubmit(evt) {
   evt.preventDefault();
 
-  const newCard = [
-    {
-      name: popupCardInputName.value,
-      link: popupCardInputLink.value,
-    },
-  ];
+  const newCard = {
+    name: popupCardInputName.value,
+    link: popupCardInputLink.value,
+  };
 
-  newCard.forEach((item) => {
-    const card = createCard(item);
-    const cards = document.querySelector(selector.cardsSpace);
-    cards.prepend(card);
-  });
+  const card = createCard(newCard);
+  cards.prepend(card);
 
-  popupCardInputName.value = "";
-  popupCardInputLink.value = "";
-  closePopup();
+  //очистка значений формы после сабмита
+  evt.target.reset();
+
+  closePopup(popupCard);
 }
 
 initialCards.forEach((item) => {
   const card = createCard(item);
-  const cards = document.querySelector(selector.cardsSpace);
   cards.append(card);
 });
 
 popupContainerCard.addEventListener("submit", handlePopupCardFormSubmit);
-
 
 
 

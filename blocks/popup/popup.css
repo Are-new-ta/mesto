@@ -1,12 +1,13 @@
 .popup {
   position: fixed;
-  justify-content: center;
-  align-items: center;
-  left: 0;
   top: 0;
-  right: 0;
-  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: flex;
+  align-items: center;
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
+  height: 0;
+  opacity: 0;
+  transition: height 0s .7s, opacity .7s 0s;
 }
