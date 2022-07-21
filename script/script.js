@@ -55,8 +55,6 @@ const cardTitle = createTemplateCard.querySelector(selector.cardTitle);
 const likeButton = createTemplateCard.querySelector(selector.likeButton);
 const imageCaption = document.querySelector(selector.imageCaption);
 const imagePopup = document.querySelector(selector.imagePopup);
-//const popupImage = document.querySelector(selector.popupImage);
-//const closePopupImagedButton = popupImage.querySelector(selector.closePopupImagedButton);
 
 const initialCards = [
   {
@@ -102,7 +100,7 @@ function openPopupProfile() {
   openPopup(popupProfile);
 }
 
-function HandlerProfileFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   editProfileTitle.textContent = popupInputName.value;
   editProfileSubtitle.textContent = popupInputJob.value;
@@ -111,7 +109,7 @@ function HandlerProfileFormSubmit(evt) {
 
 openPopupProfileBtn.addEventListener('click', openPopupProfile);
 closePopupProfileButton.addEventListener('click', () => closePopup(popupProfile));
-formProfileElement.addEventListener('submit', HandlerProfileFormSubmit);
+formProfileElement.addEventListener('submit', handleProfileFormSubmit);
 
 //popupImage
 const popupImage = document.querySelector(selector.popupImage);
@@ -141,8 +139,7 @@ function createCard(item) {
   });
 
   deleteButton.addEventListener('click', (evt) => {
-    const deleteTarget = evt.target.closest(selector.card);
-    deleteTarget.remove();
+    createTemplateCard.remove();
   });
 
   cardImage.onclick = function () {
