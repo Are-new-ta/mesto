@@ -62,23 +62,3 @@ function setFieldError(input) {
 
 enableValidation(formCard);
 enableValidation(formProfile);
-
-
-/*//Функция-коллбэк, обрабатывающая событие отправки формы.
-// Включаем или выключаем кнопку отправки формы.
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  // Форма, на котором было *установлено* событие,
-  //поэтому используем `event.currentTarget`.
-  const form = evt.currentTarget;
-  const buttonSubmit = form.querySelector(config.buttonSubmin);
-  //проверяем валидность формы и делаем кнопки artive or disabled
-  const isValid = form.checkValidity();
-  if (isValid) {
-    buttonSubmit.removeAttribute('disabled');
-    buttonSubmit.classList.remove(config.buttonDisabled);
-  } else {
-    buttonSubmit.setAttribute('disabled');
-    buttonSubmit.classList.add(config.buttonDisabled);
-  }
-}*/

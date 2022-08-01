@@ -17,7 +17,6 @@ const selector = {
   popupTextError: '.popup__error',
   //новые переменные для новых попапов
   popupCard: '.popup_data_card',
-  //popupContainerCard: '.popup__container_data_card',
   popupFormCard: '.popup__form_data_card',
   closePopupCardButton: '.popup__button-close_data_card',
   popupCardInputName: '.popup__input_data_name-card',
@@ -109,7 +108,7 @@ function closePopup(popup) {
 //новая функция для закрытия попапа при нажатии на оверлей (не работает)
 function closePopupOverlay(evt) {
   if (evt.target === evt.currentTarget) {
-    const popup = document.querySelector(selector.openPopup);
+    const popup = document.querySelector(selector.popupOpen);
     closePopup(popup);
   }
 }
@@ -257,36 +256,3 @@ initialCards.forEach((item) => {
 });
 
 popupFormCard.addEventListener("submit", handlePopupCardFormSubmit);
-
-
-
-/*/не рабочая функция
-const closePopupButtons = Array.from(document.querySelectorAll(selector.closePopupButton));
-closePopupButtons.forEach((button) => {
-  const popup = button.closest('.popup_opened');
-  button.addEventListener('click', () => { closePopup(popup); });
-  popup.addEventListener('click', (event) => { closePopupOverlay(event, popup); });
-});
-*/
-
-/*/общая функция для кнопки закрытия
-const closePopupButtons = Array.from(document.querySelector(selector.closePopupButton));
-closePopupButtons.forEach((closeBth) => {
-  const popup = closeBth.closest(selector.popup);
-  closeBth.addEventListener('click', () => closePopup(popup));
-  popup.addEventListener('click', (evt) => closePopupOverlay(evt, popup));
-});*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
