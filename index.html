@@ -59,16 +59,19 @@
     </article>
   </template>
 
-  <!--popup-->
+  <!--popup profile-->
   <div class="popup popup_data_profile">
     <div class="popup__container popup__container_data_profile">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popupProfileForm" method="post">
         <input type="text" name="popupProfileName" id="popupProfileName" placeholder="Имя"
-          class="popup__input popup__input_data_name" required>
+          class="popup__input popup__input_data_name" minlength="2" maxlength="40" required>
+        <span class="popup__error"></span>
         <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__input popup__input_data_job"
-          required>
-        <button class="popup__button-save" type="submit" value="Сохранить">Сохранить</button>
+          minlength="2" maxlength="200" required>
+        <span class="popup__error"></span>
+        <button class="popup__button-save popup__button-save_disabled" type="submit" value="Сохранить"
+          disabled>Сохранить</button>
       </form>
       <button class="popup__button-close" name="popupProfileButtonClose" type="button" aria-label="Закрыть"></button>
     </div>
@@ -81,11 +84,13 @@
       <h2 class="popup__title popup__title_data_card">Новое место </h2>
       <form class="popup__form popup__form_data_card" name="popupCardForm" method="post">
         <input type="text" name="popupNameCard" id="popupNameCard" placeholder="Название" value=""
-          class="popup__input popup__input_data_name-card" required>
+          class="popup__input popup__input_data_name-card" minlength="2" maxlength="30" required>
+        <span class="popup__error"></span>
         <input type="url" name="popupLink" id="popupLink" placeholder="Ссылка на картинку" value=""
           class="popup__input popup__input_data_link" required>
-        <button class="popup__button-save popup__button-save_data_card" type="submit"
-          value="Сохранить">Сохранить</button>
+        <span class="popup__error"></span>
+        <button class="popup__button-save popup__button-save_data_card popup__button-save_disabled" type="submit"
+          value="Создать" disabled>Создать</button>
       </form>
       <button class="popup__button-close popup__button-close_data_card" name="popupCardButtonClose" type="button"
         aria-label="Закрыть"></button>
@@ -105,37 +110,7 @@
     </div>
   </div>
   <script src="./script/script.js"></script>
+  <script src="./script/validate.js"></script>
 </body>
 
 </html>
-
-
-
-
-<!--
-  <div class="popup_data_image">
-    <div class="popup__container-image">
-      <button class="popup__button-close popup__button-close_data_image" name="popupButtonClose" type="button"
-        aria-label="Закрыть"></button>
-      <figure class="popup__image-box">
-        <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз"
-          class="popup__image ">
-        <figcaption class="popup__caption"></figcaption>
-      </figure>
-    </div>
-  </div>-->
-
-
-
-
-<!--popupImage
-   <div class="popup_data_image">
-    <div class="popup__container-image">
-      <button class="popup__button-close popup__button-close_data_image" name="popupButtonClose" type="button"
-        aria-label="Закрыть"></button>
-      <img src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Архыз"
-        class="popup__image ">
-      <h3 class="popup__caption"></h3>
-
-    </div>
-  </div>-->
