@@ -1,11 +1,20 @@
+
 class FormValidator {
-  constructor(form, config) {
+  constructor(form, config, popup) {
     this._form = document.querySelector(form);
     this._config = config;
+    this._popup = popup;
+    this._configButtonDisabled = 'popup__button-save_disabled';
+    this._inputBorderError = 'popup__input_data_error';
+    this._buttonSubmit = '.popup__button-save';
+    this._popupInput = '.popup__input';
+    this._popupTextError = '.popup__error';
+    this._closePopupButtons = document.querySelectorAll('.popup__button-close');
   }
 
   enableValidation(config) {
     this._form.addEventListener('input', (evt) => this._handleFormInput(evt, this._config));
+
   }
 
   //метод для вывода ошибок инпутов 
@@ -24,10 +33,10 @@ class FormValidator {
     const isValid = form.checkValidity();
     if (isValid) {
       buttonSubmit.removeAttribute('disabled');
-      buttonSubmit.classList.remove('popup__button-save_disabled');
+      buttonSubmit.classList.remove(this._configButtonDisabled);
     } else {
       buttonSubmit.setAttribute('disabled', true);
-      buttonSubmit.classList.add('popup__button-save_disabled');
+      buttonSubmit.classList.add(this._configButtonDisabled);
     }
   }
 
@@ -35,9 +44,15 @@ class FormValidator {
   _setInputState(input, config) {
     const isValid = input.checkValidity();
     if (isValid) {
-      input.classList.remove('popup__input_data_error');
+      input.classList.remove(this._inputBorderError);
+      this._activateSubmitButton(input);
+      this._resetErrorSpan();
+      this._resetErrorInput();
     } else {
-      input.classList.add('popup__input_data_error');
+      input.classList.add(this._inputBorderError);
+      this._disableSubmitButton(input);
+      this._resetErrorSpan();
+      this._resetErrorInput();
     }
   }
 
@@ -46,6 +61,42 @@ class FormValidator {
     const span = input.nextElementSibling;
     span.textContent = input.validationMessage;
   }
+
+  //методы из индекса для активности кнопки
+  //функция неактивной кнопки отправки (disabled button)
+  //нужноеще забросить  сброс ошибок
+  _disableSubmitButton() {
+    const buttonSubmit = this._popup.querySelector(this._buttonSubmit);
+    buttonSubmit.setAttribute('disabled', true);
+    buttonSubmit.classList.add('popup__button-save_disabled');
+  }
+
+  //функция для активного вида кнопки 
+  _activateSubmitButton() {
+    const buttonSubmit = this._popup.querySelector(this._buttonSubmit);
+    buttonSubmit.removeAttribute('disabled');
+    buttonSubmit.classList.remove('popup__button-save_disabled');
+  }
+
+  // функция, которая удаляет показ ошибок инпутов
+  _resetErrorInput() {
+    const inputArr = Array.from(this._popup.querySelectorAll(this._popupInput));
+    inputArr.forEach((input) => input.classList.remove('popup__input_data_error'));
+  }
+
+  //функция, которая удаляет показ ошибок span
+  _resetErrorSpan() {
+    const spanArr = Array.from(this._popup.querySelectorAll(this._popupTextError));
+    spanArr.forEach((span) => span.textContent = '');
+  }
+
+  resetValidation() {
+    this._disableSubmitButton();
+    this._resetErrorInput();
+    this._resetErrorSpan();
+  }
+
 }
 
 export { FormValidator };
+

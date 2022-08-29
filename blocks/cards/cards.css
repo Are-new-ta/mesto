@@ -2,15 +2,16 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 282px);
-  grid-template-rows: repeat(2, 361px);
+  grid-template-rows: repeat(minmax(1fr, 2), 361px);
   gap: 20px 17px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   margin: 51px 0 0;
   padding: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   align-items: center;
   justify-content: center;
+  min-height: 30vh;
 }
 
 @media screen and (max-width: 630px) {

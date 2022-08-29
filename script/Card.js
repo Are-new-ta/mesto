@@ -45,6 +45,7 @@ class Card {
     const deleteButton = this._element.querySelector('.card__delete');
     deleteButton.addEventListener('click', () => {
       this._element.remove();
+      this._element = null;//после ревью
     });
   }
 
