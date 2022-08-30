@@ -5,8 +5,6 @@ class Card {
     this._openPopupImage = openPopupImage;
     this._template = template;
   }
-
-
   //находим в темплейте элемент с нужным селектором и возвращаем его
   _getTemplate() {
     const cardElement = document
@@ -14,10 +12,8 @@ class Card {
       .content
       .querySelector('.card')
       .cloneNode(true);
-
     return cardElement;
   }
-
   //создание/отрисовка карточки
   createCard() {
     this._element = this._getTemplate();
@@ -27,10 +23,8 @@ class Card {
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
-
     return this._element;
   }
-
   //метод для лайка
   _likeCard() {
     const likeButton = this._element.querySelector('.card__like');
@@ -39,7 +33,6 @@ class Card {
       eventTarget.classList.toggle('card__like_active');
     });
   }
-
   //delete card
   _deleteCard() {
     const deleteButton = this._element.querySelector('.card__delete');
@@ -48,7 +41,6 @@ class Card {
       this._element = null;//после ревью
     });
   }
-
   //открытие изображения на карточке
   _openCardImage() {
     const cardImage = this._element.querySelector('.card__image');
