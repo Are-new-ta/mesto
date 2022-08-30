@@ -102,6 +102,12 @@ initialCards.forEach((item) => {
   cards.append(generateCard(item));
 });
 
+
+const ValidFormProfile = new FormValidator(formProfile, configForm, popupProfile);
+ValidFormProfile.enableValidation();
+const ValidFormCard = new FormValidator(formCard, configForm, popupCard);
+ValidFormCard.enableValidation();
+
 //Listenter
 buttonClosePopupProfile.addEventListener('click', () => closePopup(popupProfile));
 formProfileElement.addEventListener('submit', handleProfileFormSubmit);
@@ -133,7 +139,3 @@ closePopupButtons.forEach((button) => {
   popup.addEventListener('click', (evt) => { closePopupOverlay(evt); });
 });
 
-const ValidFormProfile = new FormValidator(formProfile, configForm, popupProfile);
-ValidFormProfile.enableValidation();
-const ValidFormCard = new FormValidator(formCard, configForm, popupCard);
-ValidFormCard.enableValidation();

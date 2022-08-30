@@ -10,7 +10,7 @@ class FormValidator {
     this._popupInput = config.inputPopup;
     this._popupTextError = config.popupTextError;
     this._closePopupButtons = document.querySelectorAll(config.buttonClosePopup);
-    this._buttonSubmit = form.querySelector(config.buttonSubmin);
+    this._buttonSubmit = popup.querySelector(config.buttonSubmin);
   }
 
   enableValidation(config) {
