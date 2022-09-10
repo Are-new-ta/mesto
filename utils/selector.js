@@ -24,12 +24,14 @@ const selector = {
   cardsSpace: '.cards',
   likeButton: '.card__like',
   likeButtonActive: '.card__like_active',
+  likeBtnActive: 'card__like_active',
   deleteButton: '.card__delete',
   imageCard: '.card__image',
   imageCaption: '.popup__caption',
   cardTitle: '.card__title',
   popupImage: '.popup_data_image',
   closePopupImagedButton: '.popup__button-close_data_image',
+  formPopup: '.popup__form',
   imagePopup: '.popup__image'
 }
 
