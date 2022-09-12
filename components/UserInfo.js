@@ -7,10 +7,11 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    return {
+    this._user = {
       name: this._name.textContent,
       job: this._job.textContent
     };
+    return this._user;
   }
 
   setUserInfo(newName, newJob) {
@@ -20,12 +21,12 @@ export default class UserInfo {
 }
 
 
-
-
 // export default class UserInfo {
 //   constructor(selectorName, selectorJob) {
-//     this._name = document.querySelector(selectorName);
-//       this._job = document.querySelector(selectorJob);
+//     this._selectorName = selectorName;
+//     this._selectorJob = selectorJob;
+//     this._name = document.querySelector(this._selectorName);
+//     this._job = document.querySelector(this._selectorJob);
 //   }
 
 //   getUserInfo() {
