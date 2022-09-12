@@ -20,7 +20,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
-const popupImage = new PopupWithImage(selector.imagePopup, selector);
+const popupImage = new PopupWithImage(selector.popupImage, selector);
 popupImage.setEventListeners();
 
 function handleCardClick(name, link) {
@@ -44,17 +44,17 @@ cards.renderItems();
 const userInfo = new UserInfo(selector.popupInputName, selector.popupInputJob);
 
 const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
-  handleFormSubmit: (data, evt) => {
-    evt.preventDefault();
+  handleFormSubmit: (data) => {
+    console.log(data);
     userInfo.setUserInfo(data.name, data.job);
+    console.log(userInfo);
     popupProfileForm.close();
   }
 });
 popupProfileForm.setEventListeners();
 
 const popupCardForm = new PopupWithForm(selector.popupCard, selector, {
-  handleFormSubmit: (data, evt) => {
-    evt.preventDefault();
+  handleFormSubmit: (data) => {
     const newCard = {
       name: data.name,
       link: data.link
@@ -73,6 +73,7 @@ ValidFormCard.enableValidation();
 
 buttonOpenPopupProfile.addEventListener('click', () => {
   const { name, job } = userInfo.getUserInfo();
+  console.log(buttonOpenPopupProfile);
   popupInputName.value = name;
   popupInputJob.value = job;
   ValidFormProfile.resetValidation();
