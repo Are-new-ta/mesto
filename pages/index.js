@@ -53,41 +53,6 @@ const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
 
 popupProfileForm.setEventListeners();
 
-// const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
-//   handleFormSubmit: (data) => {
-//     const { '.profile__title': name, '.profile__subtitle': job } = data;
-//     userInfo.setUserInfo(name, job);
-//     popupProfileForm.close();
-//   }
-// });
-
-
-// const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
-//   handleFormSubmit: (data) => {
-//     userInfo.setUserInfo(data.name, data.job);
-//     popupProfileForm.close();
-//   }
-// });
-
-//пока самая рабочая версия
-// const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
-//   handleFormSubmit: (data) => {
-//     const { '.popup__input_data_name': name, '.popup__input_data_job': job } = data;
-//     userInfo.setUserInfo(name, job);
-//     popupProfileForm.close();
-//   }
-// });
-
-
-// const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
-//   handleFormSubmit: (data) => {
-//     userInfo.setUserInfo(data.name, data.job);
-//     popupProfileForm.close();
-//   }
-// });
-
-
-
 const popupCardForm = new PopupWithForm(selector.popupCard, selector, {
   handleFormSubmit: (data) => {
     const newCard = {
@@ -136,6 +101,31 @@ buttonAddCard.addEventListener('click', () => {
 //   popupProfileForm.open();
 // });
 
+
+
+// const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
+//   handleFormSubmit: (data) => {
+//     const { '.profile__title': name, '.profile__subtitle': job } = data;
+//     userInfo.setUserInfo(name, job);
+//     popupProfileForm.close();
+//   }
+// });
+
+
+// const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
+//   handleFormSubmit: (data) => {
+//     userInfo.setUserInfo(data.name, data.job);
+//     popupProfileForm.close();
+//   }
+// });
+
+
+// const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
+//   handleFormSubmit: (data) => {
+//     userInfo.setUserInfo(data.name, data.job);
+//     popupProfileForm.close();
+//   }
+// });
 
 
 
