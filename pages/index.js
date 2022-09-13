@@ -106,7 +106,7 @@ ValidFormProfile.enableValidation();
 const ValidFormCard = new FormValidator(formCard, configForm, popupCard);
 ValidFormCard.enableValidation();
 
-//так в открытом попапе видно присваивание,но не происходит сохранение
+//в открытом попапе видно присваивание,но не происходит сохранение
 buttonOpenPopupProfile.addEventListener('click', () => {
   const { name, job } = userInfo.getUserInfo();
   popupInputName.value = name;
