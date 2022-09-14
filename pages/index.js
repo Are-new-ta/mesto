@@ -52,7 +52,6 @@ const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
   }
 });
 
-
 popupProfileForm.setEventListeners();
 
 const popupCardForm = new PopupWithForm(selector.popupCard, selector, {
