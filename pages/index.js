@@ -43,7 +43,7 @@ cards.renderItems();
 
 const userInfo = new UserInfo(selector.titleProfile, selector.subtitleProfile);
 
-
+//профиль,присваивание работающая версия
 const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
   handleFormSubmit: (data) => {
     const { 'popupProfileName': name, 'popupJob': job } = data;
