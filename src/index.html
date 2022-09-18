@@ -8,7 +8,6 @@
   <meta name="description" content="портфолио Анны Усовой на Яндекс Практикуме">
   <meta name="keywords" content="html, css, javascript">
   <meta name="author" content="Анна Усова">
-  <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
@@ -21,14 +20,14 @@
     <!--Profile-->
     <section class="profile">
       <div class="profile__container">
-        <img src="./images/image.jpg" alt="Жак-Ив Кусто" class="profile__image">
+        <img src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто" class="profile__image">
         <div class="profile__info-box">
           <div class="profile__box-button">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button" name="profileEditButton" aria-label="Редактировать">
             </button>
           </div>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <p class="profile__subtitle">Исследователь окена</p>
         </div>
       </div>
       <button class="profile__add-button" type="button" name="profileAddButton" aria-label="Добавить">
@@ -36,7 +35,7 @@
     </section>
 
     <!--cards -->
-    <!--Архыз -->
+    <!-- -->
     <section class="cards">
     </section>
   </main>
@@ -110,7 +109,6 @@
     </div>
   </div>
 
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
