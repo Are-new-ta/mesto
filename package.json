@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "mesto",
   "version": "0.0.1",
   "description": "This project has been created using **webpack-cli**, you can now run",
@@ -6,18 +7,37 @@
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack serve"
+=======
+  "name": "my-webpack-project",
+  "version": "1.0.0",
+  "description": "My webpack project",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "dev": "webpack serve",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve"
+>>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Are-new-ta/mesto.git"
   },
+<<<<<<< HEAD
   "author": "Usova Anna",
+=======
+  "keywords": [],
+  "author": "",
+>>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Are-new-ta/mesto/issues"
   },
   "homepage": "https://github.com/Are-new-ta/mesto#readme",
   "devDependencies": {
+<<<<<<< HEAD
     "@babel/core": "^7.19.1",
     "@babel/preset-env": "^7.19.1",
     "autoprefixer": "^10.4.11",
@@ -34,5 +54,11 @@
   },
   "dependencies": {
     "core-js": "^3.25.1"
+=======
+    "@webpack-cli/generators": "^2.5.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.0"
+>>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
   }
 }

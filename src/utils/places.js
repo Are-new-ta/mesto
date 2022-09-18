@@ -25,6 +25,7 @@ const initialCards = [
   }
 ];
 
+<<<<<<< HEAD
 export { initialCards };
 
 
@@ -57,3 +58,6 @@ export { initialCards };
 // ];
 
 // export { initialCards };
+=======
+export { initialCards };
+>>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
