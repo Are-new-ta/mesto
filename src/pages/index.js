@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import './index.css';
-=======
-// import './index.css';
->>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
 import {
   formProfile,
   formCard,
@@ -47,11 +43,6 @@ cards.renderItems();
 
 const userInfo = new UserInfo(selector.titleProfile, selector.subtitleProfile);
 
-<<<<<<< HEAD
-
-=======
-//профиль,присваивание работающая версия
->>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
 const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
   handleFormSubmit: (data) => {
     const { 'popupProfileName': name, 'popupJob': job } = data;
@@ -60,10 +51,6 @@ const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
   }
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
 popupProfileForm.setEventListeners();
 
 const popupCardForm = new PopupWithForm(selector.popupCard, selector, {

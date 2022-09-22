@@ -19,7 +19,6 @@ export default class UserInfo {
     this._job.textContent = job;
   }
 }
-<<<<<<< HEAD
 
 
 
@@ -47,5 +46,3 @@ export default class UserInfo {
 // }
 
 
-=======
->>>>>>> 68565beb85df5bc1b02026d896ebebdf5592302b
