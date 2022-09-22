@@ -10,6 +10,5 @@
 5. HTML, CSS, JavaScript
 6. Webpack
 ```
-
 **Ссыла на проектную работу**
 [Путешествия по Место](https://are-new-ta.github.io/mesto/ "красивое")
