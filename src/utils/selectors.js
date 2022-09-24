@@ -1,4 +1,4 @@
-const selector = {
+const selectors = {
   editButtonProfile: '.profile__edit-button',
   titleProfile: '.profile__title',
   subtitleProfile: '.profile__subtitle',
@@ -35,4 +35,4 @@ const selector = {
   imagePopup: '.popup__image'
 }
 
-export { selector };
+export { selectors };

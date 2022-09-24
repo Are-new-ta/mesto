@@ -2,15 +2,13 @@ import './index.css';
 import {
   formProfile,
   formCard,
-  popupProfile,
-  popupCard,
   template,
   popupInputName,
   popupInputJob,
   buttonOpenPopupProfile,
   buttonAddCard
 } from '../utils/constants.js';
-import { selector } from '../utils/selector.js';
+import { selectors } from '../utils/selectors.js';
 import { configForm } from '../utils/config.js';
 import { initialCards } from '../utils/places.js';
 import Card from '../components/Card.js';
@@ -20,7 +18,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
-const popupImage = new PopupWithImage(selector.popupImage, selector);
+const popupImage = new PopupWithImage(selectors.popupImage, selectors);
 popupImage.setEventListeners();
 
 function handleCardClick(name, link) {
@@ -28,7 +26,7 @@ function handleCardClick(name, link) {
 }
 
 function generateCard(item) {
-  const card = new Card(item, template, selector, handleCardClick);
+  const card = new Card(item, template, selectors, handleCardClick);
   return card.createCard();
 }
 
@@ -38,12 +36,12 @@ const cards = new Section({
     cards.addItem(generateCard(item));
   }
 },
-  selector.cardsSpace);
+  selectors.cardsSpace);
 cards.renderItems();
 
-const userInfo = new UserInfo(selector.titleProfile, selector.subtitleProfile);
+const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile);
 
-const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
+const popupProfileForm = new PopupWithForm(selectors.popupProfile, selectors, {
   handleFormSubmit: (data) => {
     const { 'popupProfileName': name, 'popupJob': job } = data;
     userInfo.setUserInfo(name, job);
@@ -53,11 +51,11 @@ const popupProfileForm = new PopupWithForm(selector.popupProfile, selector, {
 
 popupProfileForm.setEventListeners();
 
-const popupCardForm = new PopupWithForm(selector.popupCard, selector, {
+const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
   handleFormSubmit: (data) => {
     const newCard = {
-      name: data.name,
-      link: data.link
+      name: data.popupNameCard,
+      link: data.popupLink
     };
     cards.addItem(generateCard(newCard));
     popupCardForm.close();
@@ -66,9 +64,9 @@ const popupCardForm = new PopupWithForm(selector.popupCard, selector, {
 
 popupCardForm.setEventListeners();
 
-const ValidFormProfile = new FormValidator(formProfile, configForm, popupProfile);
+const ValidFormProfile = new FormValidator(formProfile, configForm);
 ValidFormProfile.enableValidation();
-const ValidFormCard = new FormValidator(formCard, configForm, popupCard);
+const ValidFormCard = new FormValidator(formCard, configForm);
 ValidFormCard.enableValidation();
 
 //в открытом попапе видно присваивание,но не происходит сохранение

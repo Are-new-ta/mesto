@@ -1,16 +1,16 @@
 export default class Card {
-  constructor(item, template, selector, handleCardClick) {
+  constructor(item, template, selectors, handleCardClick) {
     this._name = item.name;
     this._link = item.link;
     this._template = template;
     this._handleCardClick = handleCardClick;
-    this._imageCard = selector.imageCard;
-    this._titleCard = selector.cardTitle;
-    this._buttonLike = selector.likeButton;
-    this._buttonDelete = selector.deleteButton;
-    this._buttonActiveLike = selector.likeBtnActive;
-    this._templateCard = selector.templateCard;
-    this._selectorCard = selector.card;
+    this._imageCard = selectors.imageCard;
+    this._titleCard = selectors.cardTitle;
+    this._buttonLike = selectors.likeButton;
+    this._buttonDelete = selectors.deleteButton;
+    this._buttonActiveLike = selectors.likeBtnActive;
+    this._templateCard = selectors.templateCard;
+    this._selectorCard = selectors.card;
   }
 
   //находим в темплейте элемент с нужным селектором и возвращаем его
