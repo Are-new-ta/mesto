@@ -20,7 +20,7 @@
     <!--Profile-->
     <section class="profile">
       <div class="profile__container">
-        <img src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто" class="profile__image">
+        <div class="profile__image"></div>
         <div class="profile__info-box">
           <div class="profile__box-button">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -53,7 +53,10 @@
         class="card__image">
       <div class="card__card-container">
         <h2 class="card__title"></h2>
-        <button class="card__like" aria-label="Нравится" type="button"></button>
+        <div class="card__like-container">
+          <button class="card__like" aria-label="Нравится" type="button"></button>
+          <p class="card__like-counter"></p>
+        </div>
       </div>
     </article>
   </template>
@@ -108,6 +111,34 @@
       </figure>
     </div>
   </div>
+
+  <!--popup delete-card-->
+  <div class="popup popup_data_delete-card">
+    <div class="popup__container popup__container_data_delete-card">
+      <button class="popup__button-close popup__button-close_data_delete-card" type="button"></button>
+      <h2 class="popup__title c">Вы уверены?</h2>
+      <form class="popup__form popup__form_data_delete-card" name="input_data_delete-card" novalidate>
+        <button class="popup__button-save popup__button-save_data_delete-card" type="submit">Да</button>
+      </form>
+    </div>
+  </div>
+
+  <!--popup avatar-->
+  <div class="popup popup_data_avatar">
+    <div class="popup popup_data_avatar">
+      <button class="popup__button-close" type="button"></button>
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__form_data_avatar" name="popupAvatarForm" novalidate>
+        <input class="popup__input popup__input_data_avatar" type="url" name="input_data_avatar" value=""
+          placeholder="Ссылка на картинку" required>
+        <span class="popup__error popup__error_server"></span>
+        <button class="popup__button-save popup__button-save_data_avatar popup__button-save_data_disabled" type="submit"
+          disabled>Сохранить</button>
+      </form>
+    </div>
+
+  </div>
+
 </body>
 
 </html>

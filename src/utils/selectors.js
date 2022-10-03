@@ -1,10 +1,15 @@
 const selectors = {
+  popup: '.popup',
+  popupProfile: '.popup_data_profile',
+  popupAvatar: '.popup popup_data_avatar',
+  popupCard: '.popup_data_card',
+  popupImage: '.popup_data_image',
+
   editButtonProfile: '.profile__edit-button',
   titleProfile: '.profile__title',
   subtitleProfile: '.profile__subtitle',
   addCardButton: '.profile__add-button',
-  popup: '.popup',
-  popupProfile: '.popup_data_profile',
+  avatarProfile: '.profile__image',
   popupOpen: '.popup_opened',
   closePopupButton: '.popup__button-close',
   popupInput: '.popup__input',
@@ -14,7 +19,6 @@ const selectors = {
   buttonSubmit: '.popup__button-save',
   buttonDisabled: '.popup__button-save_disabled',
   popupTextError: '.popup__error',
-  popupCard: '.popup_data_card',
   popupFormCard: '.popup__form_data_card',
   closePopupCardButton: '.popup__button-close_data_card',
   popupCardInputName: '.popup__input_data_name-card',
@@ -29,10 +33,11 @@ const selectors = {
   imageCard: '.card__image',
   imageCaption: '.popup__caption',
   cardTitle: '.card__title',
-  popupImage: '.popup_data_image',
   closePopupImagedButton: '.popup__button-close_data_image',
   formPopup: '.popup__form',
-  imagePopup: '.popup__image'
+  imagePopup: '.popup__image',
+  cardLikeCounter: '.card__like-counter',
+  popupDeleteCard: '.popup_data_delete-card'
 }
 
 export { selectors };

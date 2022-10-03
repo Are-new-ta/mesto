@@ -4,16 +4,13 @@ const buttonOpenPopupProfile = document.querySelector(selectors.editButtonProfil
 const popupProfile = document.querySelector(selectors.popupProfile);
 const popupInputName = popupProfile.querySelector(selectors.popupInputName);
 const popupInputJob = popupProfile.querySelector(selectors.popupInputJob);
-const popupCard = document.querySelector(selectors.popupCard);
+const avatarProfile = document.querySelector(selectors.avatarProfile);
 const buttonAddCard = document.querySelector(selectors.addCardButton);//была опечатка buttonAddCar
 const template = document.querySelector(selectors.templateCard).content;
-// const popupFormCard = popupCard.querySelector(selectors.popupFormCard);
-// const popupImage = document.querySelector('.popup_data_image');
-// const imagePopup = document.querySelector(selectors.imagePopup);
-// const imageCaption = document.querySelector(selectors.imageCaption);
 
 //config
 const formProfile = '.popup__form[name = "popupProfileForm"]';
 const formCard = '.popup__form[name = "popupCardForm"]';
+const formAvatar = '.popup__form[name = "popupAvatarForm"]';
 
-export { formProfile, popupInputName, popupInputJob, formCard, template, buttonOpenPopupProfile, buttonAddCard };
+export { formProfile, popupInputName, popupInputJob, formCard, formAvatar, template, buttonOpenPopupProfile, avatarProfile, buttonAddCard };

@@ -1,4 +1,71 @@
 .profile__image {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin-right: 30px;
+  object-position: center;
+  cursor: pointer;
+}
+
+.profile__image::after,
+.profile__image::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  transition: opacity .5s linear;
+}
+
+.profile__image::before {
+  background: rgba(0, 0, 0, .8);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.profile__image::after {
+  background-image: url(../../../images/pec.webp);
+  background-size: contain;
+  height: 26px;
+  width: 26px;
+  left: 50%;
+  opacity: 0;
+  top: 50%;
+  transform: opacity .5s linear;
+}
+
+.profile__image:hover {
+  cursor: pointer;
+}
+
+.profile__image:hover::before {
+  background: rgba(0, 0, 0, .8);
+}
+
+.profile__image:hover::after {
+  opacity: 1;
+}
+
+@media screen and (max-width: 800px) {
+  .profile__image {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .profile__image {
+    margin: 0 auto 26px;
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+/* .profile__image {
   margin: 0 30px 0 0;
   padding: 0;
   border-radius: 120px;
@@ -10,4 +77,4 @@
   .profile__image {
     margin: 0;
   }
-}
+} */
