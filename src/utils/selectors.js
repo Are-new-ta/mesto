@@ -1,7 +1,7 @@
 const selectors = {
   popup: '.popup',
   popupProfile: '.popup_data_profile',
-  popupAvatar: '.popup popup_data_avatar',
+  popupAvatar: '.popup_data_avatar',
   popupCard: '.popup_data_card',
   popupImage: '.popup_data_image',
 
@@ -9,7 +9,7 @@ const selectors = {
   titleProfile: '.profile__title',
   subtitleProfile: '.profile__subtitle',
   addCardButton: '.profile__add-button',
-  avatarProfile: '.profile__image',
+  avatarProfilePc: '.profile__image',
   popupOpen: '.popup_opened',
   closePopupButton: '.popup__button-close',
   popupInput: '.popup__input',

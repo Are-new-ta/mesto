@@ -68,7 +68,7 @@ function generateCard(item) {
   return card.createCard();
 }
 
-const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfile);
+const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfilePc);
 
 const cards = new Section({
   renderer: item => {
@@ -88,22 +88,7 @@ Promise.all([api.getUserProfile(), api.getInitialCards()])
     console.log(`Ошибка: ${error}`);
   });
 
-//popupDelete
-const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
-  handleFormSubmit: (cardId, card) => {
-    api.popupDeleteCard(cardId)
-      .then(() => {
-        card.remove();
-        card = null;
-        popupDeleteCard.close();
-      })
-      .catch((error) => {
-        console.log(`Ошибка: ${error}`);
-      });
-  }
-})
 
-popupDeleteCard.setEventListeners();
 
 const popupImage = new PopupWithImage(selectors.popupImage, selectors);
 popupImage.setEventListeners();
@@ -174,13 +159,30 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
 
 popupAvatarForm.setEventListeners();
 
+//popupDelete
+const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
+  handleFormSubmit: (cardId, card) => {
+    api.popupDeleteCard(cardId)
+      .then(() => {
+        card.remove();
+        card = null;
+        popupDeleteCard.close();
+      })
+      .catch((error) => {
+        console.log(`Ошибка: ${error}`);
+      });
+  }
+})
+
+popupDeleteCard.setEventListeners();
+
 
 const ValidFormProfile = new FormValidator(formProfile, configForm);
 ValidFormProfile.enableValidation();
 const ValidFormCard = new FormValidator(formCard, configForm);
 ValidFormCard.enableValidation();
 const ValidFormAvatar = new FormValidator(formAvatar, configForm);
-avatarValidation.enableValidation();
+ValidFormAvatar.enableValidation();
 
 //в открытом попапе видно присваивание
 buttonOpenPopupProfile.addEventListener('click', () => {

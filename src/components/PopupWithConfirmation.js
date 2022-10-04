@@ -1,12 +1,12 @@
 import Popup from './Popup.js';
 
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector, { handleFormSubmit }, selectors) {
+  constructor(popupSelector, selectors, { handleFormSubmit }) {
     super(popupSelector, selectors);
-    this._popupSelector = popupSelector;//
-    this._popup = document.querySelector(this._popupSelector);//
-    this._handleFormSubmit = handleFormSubmit;
+    this._popupSelector = popupSelector;
+    this._popup = document.querySelector(this._popupSelector);
     this._popupForm = this._popup.querySelector(selectors.formPopup);
+    this._handleFormSubmit = handleFormSubmit;
   }
 
   //собирае данные о карточке

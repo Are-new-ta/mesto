@@ -87,7 +87,7 @@ export default class Card {
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
-    this._likeCounter.textContent = likes.length;
+    this._likeCounter.textContent = this._likes.length;
     this._removeIconDelete();
     this._setEventListeners();
     return this._element;

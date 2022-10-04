@@ -4,8 +4,8 @@ const buttonOpenPopupProfile = document.querySelector(selectors.editButtonProfil
 const popupProfile = document.querySelector(selectors.popupProfile);
 const popupInputName = popupProfile.querySelector(selectors.popupInputName);
 const popupInputJob = popupProfile.querySelector(selectors.popupInputJob);
-const avatarProfile = document.querySelector(selectors.avatarProfile);
-const buttonAddCard = document.querySelector(selectors.addCardButton);//была опечатка buttonAddCar
+const avatarProfile = document.querySelector(selectors.avatarProfilePc);
+const buttonAddCard = document.querySelector(selectors.addCardButton);
 const template = document.querySelector(selectors.templateCard).content;
 
 //config

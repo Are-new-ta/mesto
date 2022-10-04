@@ -20,5 +20,6 @@ export default class UserInfo {
     this._name.textContent = name;
     this._job.textContent = job;
     this._avatar.style.backgroundImage = `url(${avatar})`;
+    // this._avatar.backgroundImage = `url(${avatar})`;
   }
 }
