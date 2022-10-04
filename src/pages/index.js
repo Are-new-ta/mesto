@@ -49,7 +49,7 @@ function generateCard(item) {
           likeButton.classList.remove(buttonAcviveLike);
           likeCounter.textContent = data.likes.length;
         })
-        .cathc((error) => {
+        .catch((error) => {
           console.log(`Ошибка: ${error}`);
         });
     }
@@ -60,7 +60,7 @@ function generateCard(item) {
           likeButton.classList.add(buttonAcviveLike);
           likeCounter.textContent = data.likes.length;
         })
-        .cathc((error) => {
+        .catch((error) => {
           console.log(`Ошибка: ${error}`);
         });
     }
@@ -68,7 +68,7 @@ function generateCard(item) {
   return card.createCard();
 }
 
-const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile);
+const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfile);
 
 const cards = new Section({
   renderer: item => {
@@ -76,7 +76,7 @@ const cards = new Section({
   }
 },
   selectors.cardsSpace);
-cards.renderItems();
+// cards.renderItems();
 
 Promise.all([api.getUserProfile(), api.getInitialCards()])
   .then(([user, card]) => {
@@ -84,11 +84,11 @@ Promise.all([api.getUserProfile(), api.getInitialCards()])
     serverToken = user._id;
     cards.renderItems(card);
   })
-  .cathc((error) => {
+  .catch((error) => {
     console.log(`Ошибка: ${error}`);
   });
 
-
+//popupDelete
 const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
   handleFormSubmit: (cardId, card) => {
     api.popupDeleteCard(cardId)
@@ -97,7 +97,7 @@ const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, sel
         card = null;
         popupDeleteCard.close();
       })
-      .cathc((error) => {
+      .catch((error) => {
         console.log(`Ошибка: ${error}`);
       });
   }
@@ -108,6 +108,7 @@ popupDeleteCard.setEventListeners();
 const popupImage = new PopupWithImage(selectors.popupImage, selectors);
 popupImage.setEventListeners();
 
+//popupProfile
 const popupProfileForm = new PopupWithForm(selectors.popupProfile, selectors, {
   handleFormSubmit: (data) => {
     popupProfileForm.renderLoading(true);
@@ -117,7 +118,7 @@ const popupProfileForm = new PopupWithForm(selectors.popupProfile, selectors, {
         userInfo.setUserInfo({ name: user.name, job: user.job, avatar: user.avatar });
         popupProfileForm.close();
       })
-      .cathc((error) => {
+      .catch((error) => {
         console.log(`Ошибка: ${error}`);
       })
       .finally(() => {
@@ -138,7 +139,7 @@ const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
         cards.addItem(generateCard(newCard));
         popupCardForm.close();
       })
-      .cathc((error) => {
+      .catch((error) => {
         console.log(`Ошибка: ${error}`);
       })
       .finally(() => {
@@ -162,7 +163,7 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
       .then(() => {
         popupAvatarForm.close();
       })
-      .cathc((error) => {
+      .catch((error) => {
         console.log(`Ошибка: ${error}`);
       })
       .finally(() => {

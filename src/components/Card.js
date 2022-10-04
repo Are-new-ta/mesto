@@ -102,7 +102,7 @@ export default class Card {
 
 }
 
-export { Card };
+// export { Card };
 
 
 
