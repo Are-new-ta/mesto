@@ -89,6 +89,13 @@ Promise.all([api.getUserProfile(), api.getInitialCards()])
   });
 
 
+// const api = new Api({
+//   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
+//   headers: {
+//     authorization: 'eb1591ce-bee2-43ed-8aa3-111b6ba7c5d9',
+//     'content-type': 'application/json'
+//   }
+// });
 
 const popupImage = new PopupWithImage(selectors.popupImage, selectors);
 popupImage.setEventListeners();
@@ -176,6 +183,13 @@ const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, sel
 
 popupDeleteCard.setEventListeners();
 
+// const api = new Api({
+//   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
+//   headers: {
+//     authorization: 'eb1591ce-bee2-43ed-8aa3-111b6ba7c5d9',
+//     'content-type': 'application/json'
+//   }
+// });
 
 const ValidFormProfile = new FormValidator(formProfile, configForm);
 ValidFormProfile.enableValidation();

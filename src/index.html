@@ -125,17 +125,37 @@
 
   <!--popup avatar-->
   <div class="popup popup_data_avatar">
+    <div class="popup__container popup__container_data_avatar">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__form_data_avatar" name="popupAvatarForm" novalidate>
+        <input type="url" name="input_data_avatar" id="input_data_avatar" value="" placeholder="Ссылка на картинку"
+          class="popup__input popup__input_data_avatar" minlength="2" maxlength="40" required>
+        <span class="popup__error popup__error_server"></span>
+        <button class="popup__button-save popup__button-save_data_avatar popup__button-save_data_disabled" type="submit"
+          value="Сохранить" disabled>Сохранить</button>
+      </form>
+      <button class="popup__button-close" name="popupProfileButtonClose" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+
+
+
+
+<!--popup avatar-->
+<!-- <div class="popup popup_data_avatar">
     <button class="popup__button-close" type="button"></button>
     <h2 class="popup__title">Обновить аватар</h2>
     <form class="popup__form popup__form_data_avatar" name="popupAvatarForm" novalidate>
       <input class="popup__input popup__input_data_avatar" type="url" name="input_data_avatar" value=""
         placeholder="Ссылка на картинку" required>
       <span class="popup__error popup__error_server"></span>
+
       <button class="popup__button-save popup__button-save_data_avatar popup__button-save_data_disabled" type="submit"
         disabled>Сохранить</button>
     </form>
-  </div>
-
-</body>
-
-</html>
+  </div> -->
