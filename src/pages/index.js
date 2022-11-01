@@ -24,6 +24,8 @@ import PopupWithConfirmation from '../components/PopupWithConfirmation';
 
 let serverToken;
 
+
+
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
   headers: {
@@ -31,6 +33,17 @@ const api = new Api({
     'content-type': 'application/json'
   }
 });
+
+Promise.all([api.getUserProfile(), api.getInitialCards()])
+  .then(([user, card]) => {
+    userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
+    serverToken = user._id;
+    cards.renderItems(card);
+  })
+  .catch((error) => {
+    console.log(`Ошибка: ${error}`);
+  });
+
 
 function handleCardClick(name, link) {
   popupImage.open(name, link);
@@ -68,6 +81,15 @@ function generateCard(item) {
   return card.createCard();
 }
 
+// const api = new Api({
+//   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
+//   headers: {
+//     authorization: 'eb1591ce-bee2-43ed-8aa3-111b6ba7c5d9',
+//     'content-type': 'application/json'
+//   }
+// });
+
+
 const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfilePc);
 
 const cards = new Section({
@@ -78,36 +100,19 @@ const cards = new Section({
   selectors.cardsSpace);
 // cards.renderItems();
 
-Promise.all([api.getUserProfile(), api.getInitialCards()])
-  .then(([user, card]) => {
-    userInfo.setUserInfo({ name: user.name, job: user.job, avatar: user.avatar });
-    serverToken = user._id;
-    cards.renderItems(card);
-  })
-  .catch((error) => {
-    console.log(`Ошибка: ${error}`);
-  });
-
-
-// const api = new Api({
-//   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
-//   headers: {
-//     authorization: 'eb1591ce-bee2-43ed-8aa3-111b6ba7c5d9',
-//     'content-type': 'application/json'
-//   }
-// });
 
 const popupImage = new PopupWithImage(selectors.popupImage, selectors);
 popupImage.setEventListeners();
+
 
 //popupProfile
 const popupProfileForm = new PopupWithForm(selectors.popupProfile, selectors, {
   handleFormSubmit: (data) => {
     popupProfileForm.renderLoading(true);
-    const { 'popupProfileName': name, 'popupJob': job } = data;
-    api.changeUserProfile(name, job)
+    const { 'popupProfileName': name, 'popupJob': about } = data;
+    api.changeUserProfile(name, about)
       .then((user) => {
-        userInfo.setUserInfo({ name: user.name, job: user.job, avatar: user.avatar });
+        userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
         popupProfileForm.close();
       })
       .catch((error) => {
@@ -122,6 +127,26 @@ const popupProfileForm = new PopupWithForm(selectors.popupProfile, selectors, {
 popupProfileForm.setEventListeners();
 
 //popupCard
+// const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
+//   handleFormSubmit: (data) => {
+//     popupCardForm.renderLoading(true);
+//     const { 'popupNameCard': popupNameCard, 'popupLink': popupLink } = data;
+//     api.addNewCard(popupNameCard, popupLink)
+//       .then((newCard) => {
+//         cards.addItem(generateCard(newCard));
+//         popupCardForm.close();
+//       })
+//       .catch((error) => {
+//         console.log(`Ошибка: ${error}`);
+//       })
+//       .finally(() => {
+//         popupCardForm.renderLoading(false);
+//       });
+//   }
+// });
+
+
+//изначальная версия, в той, что выше заменила name link на имена из html
 const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
   handleFormSubmit: (data) => {
     popupCardForm.renderLoading(true);
@@ -140,6 +165,7 @@ const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
   }
 });
 
+
 popupCardForm.setEventListeners();
 
 //popupAvatar
@@ -149,7 +175,7 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
     const { 'input_data_avatar': avatar } = data;
     api.changeAvatar(avatar)
       .then((user) => {
-        userInfo.setUserInfo({ name: user.name, job: user.job, avatar: user.avatar });
+        userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
         popupAvatarForm.close();
       })
       .then(() => {
@@ -169,7 +195,7 @@ popupAvatarForm.setEventListeners();
 //popupDelete
 const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
   handleFormSubmit: (cardId, card) => {
-    api.popupDeleteCard(cardId)
+    api.deleteCard(cardId)
       .then(() => {
         card.remove();
         card = null;
@@ -183,14 +209,6 @@ const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, sel
 
 popupDeleteCard.setEventListeners();
 
-// const api = new Api({
-//   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
-//   headers: {
-//     authorization: 'eb1591ce-bee2-43ed-8aa3-111b6ba7c5d9',
-//     'content-type': 'application/json'
-//   }
-// });
-
 const ValidFormProfile = new FormValidator(formProfile, configForm);
 ValidFormProfile.enableValidation();
 const ValidFormCard = new FormValidator(formCard, configForm);
@@ -200,9 +218,9 @@ ValidFormAvatar.enableValidation();
 
 //в открытом попапе видно присваивание
 buttonOpenPopupProfile.addEventListener('click', () => {
-  const { name, job } = userInfo.getUserInfo();
+  const { name, about } = userInfo.getUserInfo();//job было но зменила на эбаут
   popupInputName.value = name;
-  popupInputJob.value = job;
+  popupInputJob.value = about;//job было но зменила на эбаут
   ValidFormProfile.resetValidation();
   popupProfileForm.open();
 });

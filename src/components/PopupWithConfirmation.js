@@ -11,7 +11,7 @@ export default class PopupWithConfirmation extends Popup {
 
   //собирае данные о карточке
   getInfoCard(cardId, card) {
-    this._cardId = cardId;
+    this._cardId = cardId;//возможно надо id, а не кард Айди
     this._card = card;
   }
 
@@ -19,7 +19,7 @@ export default class PopupWithConfirmation extends Popup {
     super.setEventListeners();
     this._popupForm.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this._handleFormSubmit(this._cardId, this._card);
+      this._handleFormSubmit(this._cardId, this._card);//возможно надо id, а не кард Айди
     });
   }
 }

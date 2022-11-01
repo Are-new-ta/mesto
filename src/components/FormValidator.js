@@ -33,12 +33,8 @@ export default class FormValidator {
     const isValid = form.checkValidity();
     if (isValid) {
       this._activateSubmitButton();
-      // this._buttonSubmit.removeAttribute('disabled');
-      // this._buttonSubmit.classList.remove(this._configButtonDisabled);
     } else {
       this._disableSubmitButton();
-      // this._buttonSubmit.setAttribute('disabled', true);
-      // this._buttonSubmit.classList.add(this._configButtonDisabled);
     }
   }
 
