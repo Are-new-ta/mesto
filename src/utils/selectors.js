@@ -17,6 +17,7 @@ const selectors = {
   popupInputJob: '.popup__input_data_job',
   popupContainer: '.popup__container',
   buttonSubmit: '.popup__button-save',
+  buttonSubmitCard: '.popup__button-save_data_card',
   buttonDisabled: '.popup__button-save_disabled',
   popupTextError: '.popup__error',
   popupFormCard: '.popup__form_data_card',

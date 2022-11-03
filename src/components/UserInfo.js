@@ -15,15 +15,15 @@ export default class UserInfo {
     };
     return this._user;
   }
-  setUserInfo(user) {
-    this._name.textContent = user.name;
-    this._job.textContent = user.job;
-    this._avatar.style.backgroundImage = `url(${user.avatar})`;
+  setUserInfo({ name, about, avatar }) {
+    this._name.textContent = name;
+    this._job.textContent = about;
+    this._avatar.style.backgroundImage = `url(${avatar})`;
   }
 
 }
 
-//версия от 22.10 до исправлений, то есть та, которую я сделала из работ мальчиков
+//версия от 22.10 до исправлений, то есть та, которую я сделала из работ
 // export default class UserInfo {
 //   constructor(selectorName, selectorJob, selectorAvatar) {
 //     this._selectorName = selectorName;
