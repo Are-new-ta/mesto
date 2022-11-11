@@ -59,12 +59,14 @@ function generateCard(item) {
     handleRevomeLike: (id, likeButton, likeCounter, buttonAcviveLike) => {
       api.deleteCard(id)
         .then((data) => {
-          likeButton.classList.remove(buttonAcviveLike);
           likeCounter.textContent = data.likes.length;
+          likeButton.classList.remove(buttonAcviveLike);
+
         })
-        .catch((error) => {
-          console.log(`Ошибка: ${error}`);
-        });
+      //закомментрила, чтобы добраться до сути ошибки, так котд с кэтч верный и нужно будет раскомментить
+      // .catch((error) => {
+      //   console.log(`Ошибка: ${error}`);
+      // });
     }
   }, {
     handleAddLike: (id, likeButton, likeCounter, buttonAcviveLike) => {
@@ -73,22 +75,14 @@ function generateCard(item) {
           likeButton.classList.add(buttonAcviveLike);
           likeCounter.textContent = data.likes.length;
         })
-        .catch((error) => {
-          console.log(`Ошибка: ${error}`);
-        });
+      //закомментрила, чтобы добраться до сути ошибки, так котд с кэтч верный и нужно будет раскомментить
+      // .catch((error) => {
+      //   console.log(`Ошибка: ${error}`);
+      // });
     }
   });
   return card.createCard();
 }
-
-// const api = new Api({
-//   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
-//   headers: {
-//     authorization: 'eb1591ce-bee2-43ed-8aa3-111b6ba7c5d9',
-//     'content-type': 'application/json'
-//   }
-// });
-
 
 const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfilePc);
 
@@ -98,7 +92,6 @@ const cards = new Section({
   }
 },
   selectors.cardsSpace);
-// cards.renderItems();
 
 
 const popupImage = new PopupWithImage(selectors.popupImage, selectors);
@@ -126,25 +119,6 @@ const popupProfileForm = new PopupWithForm(selectors.popupProfile, selectors, {
 
 popupProfileForm.setEventListeners();
 
-//popupCard
-// const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
-//   handleFormSubmit: (data) => {
-//     popupCardForm.renderLoading(true);
-//     const { 'popupNameCard': popupNameCard, 'popupLink': popupLink } = data;
-//     api.addNewCard(popupNameCard, popupLink)
-//       .then((newCard) => {
-//         cards.addItem(generateCard(newCard));
-//         popupCardForm.close();
-//       })
-//       .catch((error) => {
-//         console.log(`Ошибка: ${error}`);
-//       })
-//       .finally(() => {
-//         popupCardForm.renderLoading(false);
-//       });
-//   }
-// });
-
 
 //изначальная версия, в той, что выше заменила name link на имена из html
 const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
@@ -156,9 +130,10 @@ const popupCardForm = new PopupWithForm(selectors.popupCard, selectors, {
         cards.addItem(generateCard(newCard));
         popupCardForm.close();
       })
-      .catch((error) => {
-        console.log(`Ошибка: ${error}`);
-      })
+      //потом раскомментить
+      // .catch((error) => {
+      //   console.log(`Ошибка: ${error}`);
+      // })
       .finally(() => {
         popupCardForm.renderLoading(false);
       });
@@ -181,9 +156,10 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
       .then(() => {
         popupAvatarForm.close();
       })
-      .catch((error) => {
-        console.log(`Ошибка: ${error}`);
-      })
+      //потом раскомментить
+      // .catch((error) => {
+      //   console.log(`Ошибка: ${error}`);
+      // })
       .finally(() => {
         popupAvatarForm.renderLoading(false);
       });
@@ -194,16 +170,17 @@ popupAvatarForm.setEventListeners();
 
 //popupDelete
 const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
-  handleFormSubmit: (cardId, card) => {
-    api.deleteCard(cardId)
+  handleFormSubmit: (id, card) => {
+    api.deleteCard(id)
       .then(() => {
         card.remove();
         card = null;
         popupDeleteCard.close();
       })
-      .catch((error) => {
-        console.log(`Ошибка: ${error}`);
-      });
+    //потом раскомментить
+    // .catch((error) => {
+    //   console.log(`Ошибка: ${error}`);
+    // });
   }
 })
 
@@ -218,9 +195,9 @@ ValidFormAvatar.enableValidation();
 
 //в открытом попапе видно присваивание
 buttonOpenPopupProfile.addEventListener('click', () => {
-  const { name, about } = userInfo.getUserInfo();//job было но зменила на эбаут
+  const { name, about } = userInfo.getUserInfo();
   popupInputName.value = name;
-  popupInputJob.value = about;//job было но зменила на эбаут
+  popupInputJob.value = about;
   ValidFormProfile.resetValidation();
   popupProfileForm.open();
 });
