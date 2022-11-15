@@ -12,7 +12,6 @@ import {
 } from '../utils/constants.js';
 import { selectors } from '../utils/selectors.js';
 import { configForm } from '../utils/config.js';
-// import { initialCards } from '../utils/places.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -21,6 +20,7 @@ import UserInfo from '../components/UserInfo.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import Api from '../components/Api.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation';
+// import { data } from 'autoprefixer';
 
 let serverToken;
 
@@ -51,6 +51,7 @@ function handleCardClick(name, link) {
 
 function generateCard(item) {
   const card = new Card(item, template, selectors, serverToken, handleCardClick, {
+    //закомментировала на время проверки багов
     openPopupDeleteCard: (id, card) => {
       popupDeleteCard.open();
       popupDeleteCard.getInfoCard(id, card);
@@ -70,6 +71,7 @@ function generateCard(item) {
     }
   }, {
     handleAddLike: (id, likeButton, likeCounter, buttonAcviveLike) => {
+      console.log(item._id);
       api.deleteLikeCard(id)
         .then((data) => {
           likeButton.classList.add(buttonAcviveLike);

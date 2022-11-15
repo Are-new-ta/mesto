@@ -34,19 +34,12 @@ export default class Card {
     return cardElement;
   }
 
-  //delete card  _deleteCard() 
-  // _deleteCard() {
-  //   // const deleteButton = this._element.querySelector(this._buttonDelete);
-  //   deleteButton?.addEventListener('click', () => {
-  //     this.openPopupDeleteCard(this._id, this._element);
-  //   });
-  // }
-
   //метод для лайка _likeCard()
   _likeCard() {
     this._myLike = this._likes.filter((item) => { item._id === this._serverToken });
     if (this._myLike.length > 0) {
       this._likeButton.classList.add(this._buttonAcviveLike)
+
     } else if (this._myLike.length === 0) {
       this._likeButton.classList.remove(this._buttonAcviveLike)
     }
@@ -60,15 +53,17 @@ export default class Card {
     });
   }
 
-  _setHandlerLikes() {
-    this._likeButton.addEventListener('click', () => {
-      if (this._likeButton.classList.contains(this._buttonAcviveLike)) {
-        this._handleRevomeLike(this._id, this._likeButton, this._likeCounter, this._buttonAcviveLike);
-      } else {
-        this._handleAddLike(this._id, this._likeButton, this._likeCounter, this._buttonAcviveLike);
-      }
-    })
-  }
+
+  //заккоментировала и отправила код в создание карточки (проверка ошибки)
+  // _setHandlerLikes() {
+  //   this._likeButton.addEventListener('click', () => {
+  //     if (this._likeButton.classList.contains(this._buttonAcviveLike)) {
+  //       this._handleRevomeLike(this._id, this._likeButton, this._likeCounter, this._buttonAcviveLike);
+  //     } else {
+  //       this._handleAddLike(this._id, this._likeButton, this._likeCounter, this._buttonAcviveLike);
+  //     }
+  //   })
+  // }
 
   //удаления значка удаления
   _removeIconDelete() {
@@ -89,10 +84,24 @@ export default class Card {
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
     this._likeCounter.textContent = this._likes.length;
+    //здесь в методе используется оператор ?, что может привести к undefined
+    // deleteButton?.addEventListener('click', () => {
+    //   this.openPopupDeleteCard(this._id, this._element);
+    // });
     //было вынесено изначально в отдельный метод, но не работало
-    deleteButton?.addEventListener('click', () => {
+    deleteButton.addEventListener('click', () => {
       this.openPopupDeleteCard(this._id, this._element);
     });
+
+    //поменяла в данном месте метод контейнс на тугл и работают переключатель лайков
+    this._likeButton.addEventListener('click', () => {
+      if (this._likeButton.classList.toggle(this._buttonAcviveLike)) {//toggle вместо contains 
+        this._handleRevomeLike(this._id, this._likeButton, this._likeCounter, this._buttonAcviveLike);
+      } else {
+        this._handleAddLike(this._id, this._likeButton, this._likeCounter, this._buttonAcviveLike);
+      }
+    })
+
     this._removeIconDelete();
     this._setEventListeners();
     return this._element;
@@ -100,9 +109,7 @@ export default class Card {
 
   _setEventListeners() {
     this._likeCard();
-    // this._deleteCard(); закоментила, потому что пока заккоментила сам метод делит кард
     this._openCardImage();
-    this._setHandlerLikes();
   }
 
 }
