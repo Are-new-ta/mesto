@@ -31,11 +31,11 @@ export default class PopupWithForm extends Popup {
     this._form.reset();
   }
 
-  renderLoading(isLoading, loadingText = 'Сохранение...') {
+  renderLoading(isLoading) {
     if (isLoading) {
-      this._buttonSubmit.value = loadingText;
+      this._buttonSubmit.textContent = 'Сохранение...';
     } else {
-      this._buttonSubmitValue = this._buttonSubmit.value;
+      this._buttonSubmit.textContent = this._buttonSubmitValue;
     }
   }
 
@@ -47,4 +47,3 @@ export default class PopupWithForm extends Popup {
     });
   }
 }
-
