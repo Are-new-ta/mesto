@@ -1,6 +1,5 @@
 export default class Card {
   constructor({ item, template, selectors, userToken, handleCardClick, openPopupDeleteCard, handleAddLike, handleRevomeLike }) {
-    // console.log("item", item)
     this._name = item.name;
     this._link = item.link;
     this._id = item._id;
@@ -81,7 +80,6 @@ export default class Card {
   setCounter(likes) {
     this._likeCounter.textContent = likes.length;
     this._likes = likes;
-    // this._setLikeStatus();
   }
 
   //удаления значка удаления
@@ -91,7 +89,7 @@ export default class Card {
     }
   }
 
-  //delete card  _deleteCard()
+  //delete card
   _deleteCard() {
     const deleteButton = this._element.querySelector(this._buttonDelete);
     deleteButton.addEventListener('click', () => {
