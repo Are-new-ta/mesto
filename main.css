@@ -22,6 +22,7 @@
 .card__like_active{background-image:url(images/like_active.35948469632d0421d697.svg)}
 .card__like-counter{font-size:13px;line-height:16px;margin:3px 0 0;text-align:center}
 .card__delete{background:none;background-image:url(images/delete.823b0cf1b0b7e9cb7cad.svg);background-repeat:no-repeat;border:none;box-shadow:none;cursor:pointer;height:19px;margin:0;padding:0;position:absolute;right:20px;top:20px;transition:opacity .3s linear;width:18px}.card__delete:hover{opacity:.6}
+.card__delete_hidden{visibility:hidden}
 .popup{align-items:center;background-color:rgba(0,0,0,.5);display:flex;height:0;left:0;opacity:0;overflow:hidden;position:fixed;top:0;transition:height 0s .7s,opacity .7s 0s;width:100%}
 .popup_opened{height:100%;opacity:1;transition:height 0s 0s,opacity .7s 0s}
 .popup__form{border:none;box-sizing:border-box;display:flex;flex-direction:column;margin:0 auto;padding:0;width:358px}@media screen and (max-width:425px){.popup__form{padding:68px 0 25px;width:238px}}
