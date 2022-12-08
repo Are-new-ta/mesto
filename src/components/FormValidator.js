@@ -1,105 +1,82 @@
 
 export default class FormValidator {
   constructor(form, config) {
-    this._form = document.querySelector(form);
+    this._form = form;
     this._config = config;
     this._configButtonDisabled = config.buttonDisabled;
-    this._inputBorderError = config.buttonDisabled;
     this._configButtonSubmit = config.buttonSubmin;
-    this._popupInput = config.inputPopup;
-    this._popupTextError = config.popupTextError;
-    this._closePopupButtons = document.querySelectorAll(config.buttonClosePopup);
+    this._configInputPopup = config.inputPopup;
+    this._configInputBorderError = config.inputBorderError;
+    this._configPopupTextError = config.popupTextError;
     this._buttonSubmit = this._form.querySelector(config.buttonSubmin);
-    this._inputArr = Array.from(this._form.querySelectorAll(this._popupInput));
-    this._spanArr = Array.from(this._form.querySelectorAll(this._popupTextError));
+    this._inputArr = Array.from(this._form.querySelectorAll(this._configInputPopup));
   }
 
-  enableValidation(config) {
-    this._form.addEventListener('input', (evt) => this._handleFormInput(evt));
-  }
-
-  //метод для вывода ошибок инпутов  был _handleFormInput
-  _handleFormInput(evt) {
-    const input = evt.target;
-    const form = evt.currentTarget;
-    this._setInputState(input);
-    this._setFieldError(input);
-    this._toggleButtonState(form);
-  }
-
-  //метод для вывода ошибок инпутов 
-  _toggleButtonState(form, config) {
-    //проверяем валидность формы и делаем кнопки artive or disabled
-    const isValid = form.checkValidity();
-    if (isValid) {
-      this._activateSubmitButton();
-    } else {
-      this._disableSubmitButton();
-    }
-  }
-
-  //метод для проверки инпутов на валидность
-  _setInputState(input, config) {
-    const isValid = input.checkValidity();
-    if (isValid) {
-      input.classList.remove(this._inputBorderError);
-      this._activateSubmitButton();
-      this._resetErrorSpan();
-      this._resetErrorInput();
-    } else {
-      input.classList.add(this._inputBorderError);
-      this._disableSubmitButton();
-      this._resetErrorSpan();
-      this._resetErrorInput();
-    }
-  }
-
-  // Записываем текст ошибок в специальные контейнеры под каждым полем.
-  _setFieldError(input) {
-    const span = input.nextElementSibling;
-    span.textContent = input.validationMessage;
-  }
-
-  //методы из индекса для активности кнопки
-  //функция неактивной кнопки отправки (disabled button)
-  //нужноеще забросить  сброс ошибок
-  _disableSubmitButton() {
-    this._buttonSubmit.setAttribute('disabled', true);
-    this._buttonSubmit.classList.add(this._configButtonDisabled);
-  }
-
-  //функция для активного вида кнопки 
-  _activateSubmitButton() {
-    this._buttonSubmit.removeAttribute('disabled');
-    this._buttonSubmit.classList.remove(this._configButtonDisabled);
-  }
-
-  // функция, которая удаляет показ ошибок инпутов
-  _resetErrorInput() {
-    this._inputArr.forEach((input) => input.classList.remove(this._configButtonDisabled));
-  }
-
-  //функция, которая удаляет показ ошибок span
-  _resetErrorSpan() {
-    this._spanArr.forEach((span) => span.textContent = '');
-  }
+  enableValidation() {
+    this._setEventListeners();
+  };
 
   resetValidation() {
-    this._disableSubmitButton();
-    this._resetErrorInput();
-    this._resetErrorSpan();
-  }
+    this._toggleButtonState();
+
+    this._inputArr.forEach((input) => {
+      this._hideInputError(input);
+    });
+  };
+
+  _setEventListeners() {
+    this._toggleButtonState();
+
+    this._inputArr.forEach((input) => {
+      input.addEventListener('input', () => {
+        this._checkInputValidity(input);
+        this._toggleButtonState();
+      });
+    });
+  };
+
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._buttonSubmit.classList.add(this._configButtonDisabled);
+      this._buttonSubmit.setAttribute('disabled', true);
+    } else {
+      this._buttonSubmit.classList.remove(this._configButtonDisabled);
+      this._buttonSubmit.removeAttribute('disabled');
+    }
+  };
+
+  _hasInvalidInput() {
+    return this._inputArr.some((input) => {
+      return !input.validity.valid;
+    })
+  };
+
+  _checkInputValidity(input) {
+    if (!input.validity.valid) {
+      this._showInputError(input);
+    } else {
+      this._hideInputError(input);
+    }
+  };
+
+  _showInputError(input) {
+    this._span = this._form.querySelector(`.${input.id}-error`);
+    input.classList.add(this._configInputBorderError);
+    this._span.textContent = input.validationMessage;
+    this._span.classList.add(this._configPopupTextError);
+  };
+
+  _hideInputError(input) {
+    this._span = this._form.querySelector(`.${input.id}-error`);
+    console.log('span ', this._span);
+    input.classList.remove(this._configInputBorderError);
+    this._span.classList.remove(this._configPopupTextError);
+    this._span.textContent = '';
+  };
+
 }
 
 export { FormValidator };
-
-
-
-
-
-
-
-
 
 
 

@@ -3,9 +3,8 @@ import {
   formProfile,
   formCard,
   formAvatar,
-  template,
-  popupInputName,
-  popupInputJob,
+  configInputPopupName,
+  configInputPopupJob,
   avatarProfile,
   buttonOpenPopupProfile,
   buttonAddCard
@@ -21,7 +20,7 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import Api from '../components/Api.js';
 import PopupWithConfirmation from '../components/PopupWithConfirmation';
 
-let userToken;
+let userId;
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-50/',
@@ -33,8 +32,10 @@ const api = new Api({
 
 Promise.all([api.getUserProfile(), api.getInitialCards()])
   .then(([user, card]) => {
-    userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
-    userToken = user._id;
+    // userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
+    userInfo.setUserInfo(user);
+    userId = user._id;
+    console.log('SuserId', userId);
     cards.renderItems(card);
   })
   .catch((error) => {
@@ -50,26 +51,27 @@ function handleCardClick(name, link) {
 function generateCard(item) {
   const card = new Card({
     item,
-    template,
     selectors,
-    userToken,
+    userId,
     handleCardClick,
     openPopupDeleteCard: (id, card) => {
       popupDeleteCard.open();
-      popupDeleteCard.getInfoCard(id, card);
+      popupDeleteCard.setInfoCard(id, card);
     },
-    handleAddLike: (id) => {
+    handleAddLike: (id, likeButton) => {
       api.addLikeCard(id)
         .then((data) => {
+          likeButton.classList.add(selectors.likeBtnActive);
           card.setCounter(data.likes);
         })
         .catch((error) => {
           console.log(`Ошибка: ${error}`);
         });
     },
-    handleRevomeLike: (id) => {
+    handleRevomeLike: (id, likeButton) => {
       api.deleteLikeCard(id)
         .then((data) => {
+          likeButton.classList.remove(selectors.likeBtnActive);
           card.setCounter(data.likes);
         })
         .catch((error) => {
@@ -142,10 +144,7 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
     const { 'input_data_avatar': avatar } = data;
     api.changeAvatar(avatar)
       .then((user) => {
-        userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
-        popupAvatarForm.close();
-      })
-      .then(() => {
+        userInfo.setUserInfo(user);
         popupAvatarForm.close();
       })
       .catch((error) => {
@@ -163,20 +162,27 @@ const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, sel
   handleFormSubmit: (id, card) => {
     api.deleteCard(id)
       .then(() => {
-        card.remove();
+
+        card.removeCard();
+
+        //пояснение, что из себя представляет removeCard()
+        // removeCard() {
+        //   return this._card.remove();
+        // }
+
         card = null;
         popupDeleteCard.close();
       })
-      .catch((error) => {
-        console.log(`Ошибка: ${error}`);
-      });
+    // .catch((error) => {
+    //   console.log(`Ошибка: ${error}`);
+    // });
   }
 })
 
 popupDeleteCard.setEventListeners();
 
-const ValidFormProfile = new FormValidator(formProfile, configForm);
-ValidFormProfile.enableValidation();
+const validFormProfile = new FormValidator(formProfile, configForm);
+validFormProfile.enableValidation();
 const ValidFormCard = new FormValidator(formCard, configForm);
 ValidFormCard.enableValidation();
 const ValidFormAvatar = new FormValidator(formAvatar, configForm);
@@ -185,9 +191,9 @@ ValidFormAvatar.enableValidation();
 //в открытом попапе видно присваивание
 buttonOpenPopupProfile.addEventListener('click', () => {
   const { name, about } = userInfo.getUserInfo();
-  popupInputName.value = name;
-  popupInputJob.value = about;
-  ValidFormProfile.resetValidation();
+  configInputPopupName.value = name;
+  configInputPopupJob.value = about;
+  validFormProfile.resetValidation();
   popupProfileForm.open();
 });
 

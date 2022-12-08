@@ -69,12 +69,12 @@
     <div class="popup__container popup__container_data_profile">
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" name="popupProfileForm" method="post">
-        <input type="text" name="popupProfileName" id="popupProfileName" placeholder="Имя"
+        <input type="text" name="popupProfileName" id="popup__input_data_name" placeholder="Имя"
           class="popup__input popup__input_data_name" minlength="2" maxlength="40" required>
-        <span class="popup__error"></span>
-        <input type="text" name="popupJob" id="popupJob" placeholder="О себе" class="popup__input popup__input_data_job"
-          minlength="2" maxlength="200" required>
-        <span class="popup__error"></span>
+        <span class="popup__error popup__input_data_name-error"></span>
+        <input type="text" name="popupJob" id="popup__input_data_job" placeholder="О себе"
+          class="popup__input popup__input_data_job" minlength="2" maxlength="200" required>
+        <span class="popup__error popup__input_data_job-error"></span>
         <button class="popup__button-save popup__button-save_disabled" type="submit" value="Сохранить"
           disabled>Сохранить</button>
       </form>
@@ -82,18 +82,17 @@
     </div>
   </div>
 
-
   <!--popupAddCard-->
   <div class="popup popup_data_card">
     <div class="popup__container popup__container_data_card">
       <h2 class="popup__title popup__title_data_card">Новое место </h2>
       <form class="popup__form popup__form_data_card" name="popupCardForm" method="post">
-        <input type="text" name="popupNameCard" id="popupNameCard" placeholder="Название" value=""
+        <input type="text" name="popupNameCard" id="popup__input_data_name-card" placeholder="Название" value=""
           class="popup__input popup__input_data_name-card" minlength="2" maxlength="30" required>
-        <span class="popup__error"></span>
-        <input type="url" name="popupLink" id="popupLink" placeholder="Ссылка на картинку" value=""
+        <span class="popup__error popup__input_data_name-card-error"></span>
+        <input type="url" name="popupLink" id="popup__input_data_link" placeholder="Ссылка на картинку" value=""
           class="popup__input popup__input_data_link" required>
-        <span class="popup__error"></span>
+        <span class="popup__error popup__input_data_link-error"></span>
         <button class="popup__button-save popup__button-save_data_card popup__button-save_disabled" type="submit"
           value="Создать" disabled>Создать</button>
       </form>
@@ -131,9 +130,9 @@
     <div class="popup__container popup__container_data_avatar">
       <h2 class="popup__title">Обновить аватар</h2>
       <form class="popup__form popup__form_data_avatar" name="popupAvatarForm" novalidate>
-        <input type="url" name="input_data_avatar" id="input_data_avatar" value="" placeholder="Ссылка на картинку"
-          class="popup__input popup__input_data_avatar" minlength="2" maxlength="40" required>
-        <span class="popup__error popup__error_server"></span>
+        <input type="url" name="input_data_avatar" id="popup__input_data_avatar" value=""
+          placeholder="Ссылка на картинку" class="popup__input popup__input_data_avatar" minlength="2" required>
+        <span class="popup__error popup__error_server popup__input_data_avatar-error"></span>
         <button class="popup__button-save popup__button-save_data_avatar popup__button-save_data_disabled" type="submit"
           value="Сохранить" disabled>Сохранить</button>
       </form>
