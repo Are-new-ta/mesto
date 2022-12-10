@@ -16,15 +16,18 @@ export default class UserInfo {
     return this._user;
   }
 
+  //устанавливаем аватар
+  setUserAvatar(linkAvatar) {
+    if (linkAvatar) {
+      this._avatar.src = linkAvatar;
+    } else {
+      this._avatar.src = 'https://www.boredpanda.com/blog/wp-content/uploads/2018/07/BbxQjM6HycS-png__700.jpg';
+    }
+  }
+
   setUserInfo(user) {
     this._name.textContent = user.name;
     this._job.textContent = user.about;
-    this._avatar.src = `url(${user.avatar})`;
+    this.setUserAvatar(user.avatar);
   }
 }
-
-// setUserInfo({ name, about, avatar }) {
-//   this._name.textContent = name;
-//   this._job.textContent = about;
-//   this._avatar.src = `url(${avatar})`;//может быть данная версия не будет работать
-//   // this._avatar.style.backgroundImage = `url(${avatar})`;

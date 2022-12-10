@@ -32,10 +32,8 @@ const api = new Api({
 
 Promise.all([api.getUserProfile(), api.getInitialCards()])
   .then(([user, card]) => {
-    // userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
     userInfo.setUserInfo(user);
     userId = user._id;
-    console.log('SuserId', userId);
     cards.renderItems(card);
   })
   .catch((error) => {
@@ -103,7 +101,7 @@ const popupProfileForm = new PopupWithForm(selectors.popupProfile, selectors, {
     const { 'popupProfileName': name, 'popupJob': about } = data;
     api.changeUserProfile(name, about)
       .then((user) => {
-        userInfo.setUserInfo({ name: user.name, about: user.about, avatar: user.avatar });
+        userInfo.setUserInfo(user);
         popupProfileForm.close();
       })
       .catch((error) => {
@@ -144,7 +142,8 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
     const { 'input_data_avatar': avatar } = data;
     api.changeAvatar(avatar)
       .then((user) => {
-        userInfo.setUserInfo(user);
+        userInfo.setUserAvatar(user.avatar);
+        // userInfo.setUserInfo(user.avatar);
         popupAvatarForm.close();
       })
       .catch((error) => {
@@ -157,25 +156,22 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
 });
 popupAvatarForm.setEventListeners();
 
+function handlerDeleteCard(card) {
+  card.remove();
+  card = null;
+}
+
 //popupDelete
-const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
+const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, handlerDeleteCard, {
   handleFormSubmit: (id, card) => {
     api.deleteCard(id)
       .then(() => {
-
-        card.removeCard();
-
-        //пояснение, что из себя представляет removeCard()
-        // removeCard() {
-        //   return this._card.remove();
-        // }
-
-        card = null;
+        handlerDeleteCard(card);
         popupDeleteCard.close();
       })
-    // .catch((error) => {
-    //   console.log(`Ошибка: ${error}`);
-    // });
+      .catch((error) => {
+        console.log(`Ошибка: ${error}`);
+      });
   }
 })
 
@@ -183,10 +179,10 @@ popupDeleteCard.setEventListeners();
 
 const validFormProfile = new FormValidator(formProfile, configForm);
 validFormProfile.enableValidation();
-const ValidFormCard = new FormValidator(formCard, configForm);
-ValidFormCard.enableValidation();
-const ValidFormAvatar = new FormValidator(formAvatar, configForm);
-ValidFormAvatar.enableValidation();
+const validFormCard = new FormValidator(formCard, configForm);
+validFormCard.enableValidation();
+const validFormAvatar = new FormValidator(formAvatar, configForm);
+validFormAvatar.enableValidation();
 
 //в открытом попапе видно присваивание
 buttonOpenPopupProfile.addEventListener('click', () => {
@@ -199,11 +195,11 @@ buttonOpenPopupProfile.addEventListener('click', () => {
 
 buttonAddCard.addEventListener('click', () => {
   popupCardForm.open();
-  ValidFormCard.resetValidation();
+  validFormCard.resetValidation();
 });
 
 avatarProfile.addEventListener('click', () => {
   popupAvatarForm.open();
-  ValidFormAvatar.resetValidation();
+  validFormAvatar.resetValidation();
 });
 

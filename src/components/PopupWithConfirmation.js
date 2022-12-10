@@ -1,12 +1,12 @@
 import Popup from './Popup.js';
 
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector, selectors, { handleFormSubmit }) {
+  constructor(popupSelector, selectors, handlerDeleteCard, { handleFormSubmit }) {
     super(popupSelector, selectors);
     this._popupSelector = popupSelector;
-    // this._popup = document.querySelector(this._popupSelector); после комментариев ревью
     this._popupForm = this._popup.querySelector(selectors.formPopup);
     this._handleFormSubmit = handleFormSubmit;
+    this._handlerDeleteCard = handlerDeleteCard;
   }
 
   //устанавливает данные о карточке
@@ -14,11 +14,6 @@ export default class PopupWithConfirmation extends Popup {
     this._id = id;
     this._card = card;
   }
-
-  //пробный метод для удаления карточки 
-  // removeCard() {
-  //   return this._card.remove();
-  // }
 
   setEventListeners() {
     super.setEventListeners();

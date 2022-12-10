@@ -68,7 +68,6 @@ export default class FormValidator {
 
   _hideInputError(input) {
     this._span = this._form.querySelector(`.${input.id}-error`);
-    console.log('span ', this._span);
     input.classList.remove(this._configInputBorderError);
     this._span.classList.remove(this._configPopupTextError);
     this._span.textContent = '';

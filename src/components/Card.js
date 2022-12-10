@@ -11,7 +11,6 @@ export default class Card {
     this.openPopupDeleteCard = openPopupDeleteCard;
     this._handleAddLike = handleAddLike;
     this._handleRevomeLike = handleRevomeLike;
-    // this.handlerDeleteCard = handlerDeleteCard;
 
     this._likeCounterSelector = selectors.cardLikeCounter;
     this._imageCardSelector = selectors.imageCard;
@@ -36,6 +35,11 @@ export default class Card {
   // проверяем поставлен лайк или нет
   isLiked() {
     const isLiked = this._likes.some(user => user._id === this._userId);
+    if (isLiked) {
+      this._likeButton.classList.add(this._buttonActiveLikeSelector);
+    } else {
+      this._likeButton.classList.remove(this._buttonActiveLikeSelector);
+    }
     return isLiked;
   }
 
@@ -75,6 +79,7 @@ export default class Card {
     cardTitle.textContent = this._name;
     this._likeCounter.textContent = this._likes.length;
     this._removeIconDelete();
+    this.isLiked();
     this._setEventListeners();
     return this._element;
   }
@@ -92,62 +97,9 @@ export default class Card {
     deleteButton.addEventListener('click', () => {
       this._removeIconDelete();
       this.openPopupDeleteCard(this._id, this._element);
-      // this.handlerDeleteCard(this._element);
     });
   }
 
-
-  //пробный метод для удаления карточки 
-  // removeCard() {
-  //   return this._element.remove();
-  // }
-
 }
 
-
-
-
-
-
-
-
-
-
-  // устанавливаем статус для лайка
-  // _setLikeStatus() {
-  //   if (this.isLiked()) {
-  //     this._likeButton.classList.add(this._buttonActiveLikeSelector);
-  //   } else {
-  //     this._likeButton.classList.remove(this._buttonActiveLikeSelector);
-  //   }
-  // }
-   //устанавливаем слушатель на изображения карточки
-  // _setListenerImageCard() {
-  // const imageCard = this._element.querySelector(this._imageCardSelector);
-  //   imageCard.addEventListener('click', () => {
-  //     this._handleCardClick(this._name, this._link);
-  //   });
-  // }
-
-  //метод для лайка
-  // _setListenerLikeButton() {
-  //   this._likeButton.addEventListener('click', () => {
-  //     this._setLikeStatus();
-  //     this._setLikesCounter()
-  //   });
-  // }
-  //delete card
-  // _setListenerDeleteCard() {
-  //   const deleteButton = this._element.querySelector(this._buttonDeleteSelector);
-  //   deleteButton.addEventListener('click', () => {
-  //     this.openPopupDeleteCard(this._id, this._element);
-  //   });
-  // }
-
-  //удаления значка удаления
-  // _removeIconDelete() {
-  //   if (this._ownerId == this._userId) {
-  //     this._element.querySelector(this._buttonDeleteSelector).remove();
-  //   }
-  // }
 
