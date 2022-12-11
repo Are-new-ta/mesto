@@ -32,15 +32,19 @@ export default class Card {
     return cardElement;
   }
 
+
   // проверяем поставлен лайк или нет
   isLiked() {
     const isLiked = this._likes.some(user => user._id === this._userId);
-    if (isLiked) {
+    return isLiked;
+  }
+
+  _likeCard() {
+    if (this.isLiked()) {
       this._likeButton.classList.add(this._buttonActiveLikeSelector);
     } else {
       this._likeButton.classList.remove(this._buttonActiveLikeSelector);
     }
-    return isLiked;
   }
 
   //Counter
@@ -80,6 +84,7 @@ export default class Card {
     this._likeCounter.textContent = this._likes.length;
     this._removeIconDelete();
     this.isLiked();
+    this._likeCard()
     this._setEventListeners();
     return this._element;
   }
@@ -95,7 +100,6 @@ export default class Card {
 
     const deleteButton = this._element.querySelector(this._buttonDeleteSelector);
     deleteButton.addEventListener('click', () => {
-      this._removeIconDelete();
       this.openPopupDeleteCard(this._id, this._element);
     });
   }

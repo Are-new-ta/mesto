@@ -143,7 +143,6 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
     api.changeAvatar(avatar)
       .then((user) => {
         userInfo.setUserAvatar(user.avatar);
-        // userInfo.setUserInfo(user.avatar);
         popupAvatarForm.close();
       })
       .catch((error) => {
@@ -156,17 +155,13 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
 });
 popupAvatarForm.setEventListeners();
 
-function handlerDeleteCard(card) {
-  card.remove();
-  card = null;
-}
 
 //popupDelete
-const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, handlerDeleteCard, {
+const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
   handleFormSubmit: (id, card) => {
     api.deleteCard(id)
       .then(() => {
-        handlerDeleteCard(card);
+        popupDeleteCard.removeCard(card);
         popupDeleteCard.close();
       })
       .catch((error) => {

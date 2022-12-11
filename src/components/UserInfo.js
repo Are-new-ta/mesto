@@ -18,11 +18,7 @@ export default class UserInfo {
 
   //устанавливаем аватар
   setUserAvatar(linkAvatar) {
-    if (linkAvatar) {
-      this._avatar.src = linkAvatar;
-    } else {
-      this._avatar.src = 'https://www.boredpanda.com/blog/wp-content/uploads/2018/07/BbxQjM6HycS-png__700.jpg';
-    }
+    this._avatar.src = linkAvatar;
   }
 
   setUserInfo(user) {
