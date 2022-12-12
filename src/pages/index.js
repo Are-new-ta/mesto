@@ -55,7 +55,6 @@ function generateCard(item) {
     openPopupDeleteCard: (id, card) => {
       popupDeleteCard.open();
       popupDeleteCard.setInfoCard(id, card);
-      // card.removeCard();
     },
     handleAddLike: (id) => {
       api.addLikeCard(id)
@@ -77,7 +76,7 @@ function generateCard(item) {
     },
 
     //новый метод удаления карточки
-    handleDeleteCard: (id, card) => {
+    handleDeleteCard: (id) => {
       api.deleteCard(id)
         .then(() => {
           card.removeCard();
@@ -91,7 +90,6 @@ function generateCard(item) {
   });
   return card.createCard();
 }
-
 
 const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfilePc);
 

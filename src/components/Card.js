@@ -74,9 +74,8 @@ export default class Card {
 
   //удаление карточки
   removeCard() {
-    this._card = this._element.querySelector(this._selectorCard);
-    this._card.remove();
-    this._card = null;
+    this._element.remove();
+    this._element = null;
   }
 
   //создание/отрисовка карточки
