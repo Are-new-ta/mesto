@@ -55,30 +55,43 @@ function generateCard(item) {
     openPopupDeleteCard: (id, card) => {
       popupDeleteCard.open();
       popupDeleteCard.setInfoCard(id, card);
+      // card.removeCard();
     },
-    handleAddLike: (id, likeButton) => {
+    handleAddLike: (id) => {
       api.addLikeCard(id)
         .then((data) => {
-          likeButton.classList.add(selectors.likeBtnActive);
           card.setCounter(data.likes);
         })
         .catch((error) => {
           console.log(`Ошибка: ${error}`);
         });
     },
-    handleRevomeLike: (id, likeButton) => {
+    handleRevomeLike: (id) => {
       api.deleteLikeCard(id)
         .then((data) => {
-          likeButton.classList.remove(selectors.likeBtnActive);
           card.setCounter(data.likes);
+        })
+        .catch((error) => {
+          console.log(`Ошибка: ${error}`);
+        });
+    },
+
+    //новый метод удаления карточки
+    handleDeleteCard: (id, card) => {
+      api.deleteCard(id)
+        .then(() => {
+          card.removeCard();
+          popupDeleteCard.close();
         })
         .catch((error) => {
           console.log(`Ошибка: ${error}`);
         });
     }
+
   });
   return card.createCard();
 }
+
 
 const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfilePc);
 
@@ -157,18 +170,7 @@ popupAvatarForm.setEventListeners();
 
 
 //popupDelete
-const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors, {
-  handleFormSubmit: (id, card) => {
-    api.deleteCard(id)
-      .then(() => {
-        popupDeleteCard.removeCard(card);
-        popupDeleteCard.close();
-      })
-      .catch((error) => {
-        console.log(`Ошибка: ${error}`);
-      });
-  }
-})
+const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors);
 
 popupDeleteCard.setEventListeners();
 
@@ -197,4 +199,5 @@ avatarProfile.addEventListener('click', () => {
   popupAvatarForm.open();
   validFormAvatar.resetValidation();
 });
+
 

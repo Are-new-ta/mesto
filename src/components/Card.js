@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ item, selectors, userId, handleCardClick, openPopupDeleteCard, handleAddLike, handleRevomeLike }) {
+  constructor({ item, selectors, userId, handleCardClick, openPopupDeleteCard, handleAddLike, handleRevomeLike, handleDeleteCard }) {
     this._name = item.name;
     this._link = item.link;
     this._id = item._id;
@@ -11,6 +11,7 @@ export default class Card {
     this.openPopupDeleteCard = openPopupDeleteCard;
     this._handleAddLike = handleAddLike;
     this._handleRevomeLike = handleRevomeLike;
+    this._handleDeleteCard = handleDeleteCard;
 
     this._likeCounterSelector = selectors.cardLikeCounter;
     this._imageCardSelector = selectors.imageCard;
@@ -32,7 +33,6 @@ export default class Card {
     return cardElement;
   }
 
-
   // проверяем поставлен лайк или нет
   isLiked() {
     const isLiked = this._likes.some(user => user._id === this._userId);
@@ -50,15 +50,16 @@ export default class Card {
   //Counter
   _setLikesCounter() {
     if (this.isLiked()) {
-      this._handleRevomeLike(this._id, this._likeButton);
+      this._handleRevomeLike(this._id);
     } else {
-      this._handleAddLike(this._id, this._likeButton);
+      this._handleAddLike(this._id);
     }
   }
 
   setCounter(likes) {
     this._likeCounter.textContent = likes.length;
     this._likes = likes;
+    this._likeCard();
   }
 
   //удаления значка удаления
@@ -71,9 +72,17 @@ export default class Card {
     }
   }
 
+  //удаление карточки
+  removeCard() {
+    this._card = this._element.querySelector(this._selectorCard);
+    this._card.remove();
+    this._card = null;
+  }
+
   //создание/отрисовка карточки
   createCard() {
     this._element = this._getTemplate();
+    this._card = this._element.querySelector(this._selectorCard);//надо будет удалить возможно
     this._likeButton = this._element.querySelector(this._buttonLikeSelector);
     this._likeCounter = this._element.querySelector(this._likeCounterSelector);
     const imageCard = this._element.querySelector(this._imageCardSelector);
@@ -83,7 +92,6 @@ export default class Card {
     cardTitle.textContent = this._name;
     this._likeCounter.textContent = this._likes.length;
     this._removeIconDelete();
-    this.isLiked();
     this._likeCard()
     this._setEventListeners();
     return this._element;
@@ -101,9 +109,8 @@ export default class Card {
     const deleteButton = this._element.querySelector(this._buttonDeleteSelector);
     deleteButton.addEventListener('click', () => {
       this.openPopupDeleteCard(this._id, this._element);
+      this._handleDeleteCard(this._id, this._element);
     });
   }
-
 }
-
 
