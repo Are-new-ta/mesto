@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ item, selectors, userId, handleCardClick, openPopupDeleteCard, handleAddLike, handleRevomeLike, handleDeleteCard }) {
+  constructor({ item, selectors, userId, handleCardClick, openPopupDeleteCard, handleAddLike, handleRevomeLike }) {
     this._name = item.name;
     this._link = item.link;
     this._id = item._id;
@@ -11,7 +11,7 @@ export default class Card {
     this.openPopupDeleteCard = openPopupDeleteCard;
     this._handleAddLike = handleAddLike;
     this._handleRevomeLike = handleRevomeLike;
-    this._handleDeleteCard = handleDeleteCard;
+    // this._handleDeleteCard = handleDeleteCard;
 
     this._likeCounterSelector = selectors.cardLikeCounter;
     this._imageCardSelector = selectors.imageCard;
@@ -81,7 +81,6 @@ export default class Card {
   //создание/отрисовка карточки
   createCard() {
     this._element = this._getTemplate();
-    this._card = this._element.querySelector(this._selectorCard);//надо будет удалить возможно
     this._likeButton = this._element.querySelector(this._buttonLikeSelector);
     this._likeCounter = this._element.querySelector(this._likeCounterSelector);
     const imageCard = this._element.querySelector(this._imageCardSelector);
@@ -108,8 +107,8 @@ export default class Card {
     const deleteButton = this._element.querySelector(this._buttonDeleteSelector);
     deleteButton.addEventListener('click', () => {
       this.openPopupDeleteCard(this._id, this._element);
-      this._handleDeleteCard(this._id, this._element);
     });
   }
 }
+
 

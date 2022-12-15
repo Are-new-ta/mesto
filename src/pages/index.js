@@ -45,7 +45,6 @@ function handleCardClick(name, link) {
   popupImage.open(name, link);
 }
 
-
 function generateCard(item) {
   const card = new Card({
     item,
@@ -55,7 +54,37 @@ function generateCard(item) {
     openPopupDeleteCard: (id, card) => {
       popupDeleteCard.open();
       popupDeleteCard.setInfoCard(id, card);
+
+      popupDeleteCard.setSubmitAction(() => {
+        api.deleteCard(id)
+          .then(() => {
+            card.removeCard();
+            popupDeleteCard.close();
+          })
+        // .catch((error) => {
+        //   console.log(`Ошибка: ${error}`);
+        // });
+      })
+
+
     },
+
+    // //новый метод удаления карточки
+    // handleDeleteCard: (id) => {
+    //   popupDeleteCard.setSubmitAction(() => {
+    //     api.deleteCard(id)
+    //       .then(() => {
+    //         card.removeCard();
+    //         popupDeleteCard.close();
+    //       })
+    //       .catch((error) => {
+    //         console.log(`Ошибка: ${error}`);
+    //       });
+    //   })
+
+    // },
+
+
     handleAddLike: (id) => {
       api.addLikeCard(id)
         .then((data) => {
@@ -73,23 +102,17 @@ function generateCard(item) {
         .catch((error) => {
           console.log(`Ошибка: ${error}`);
         });
-    },
-
-    //новый метод удаления карточки
-    handleDeleteCard: (id) => {
-      api.deleteCard(id)
-        .then(() => {
-          card.removeCard();
-          popupDeleteCard.close();
-        })
-        .catch((error) => {
-          console.log(`Ошибка: ${error}`);
-        });
     }
-
   });
   return card.createCard();
 }
+
+
+//popupDelete
+const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors);
+popupDeleteCard.setEventListeners();
+
+
 
 const userInfo = new UserInfo(selectors.titleProfile, selectors.subtitleProfile, selectors.avatarProfilePc);
 
@@ -166,11 +189,6 @@ const popupAvatarForm = new PopupWithForm(selectors.popupAvatar, selectors, {
 });
 popupAvatarForm.setEventListeners();
 
-
-//popupDelete
-const popupDeleteCard = new PopupWithConfirmation(selectors.popupDeleteCard, selectors);
-
-popupDeleteCard.setEventListeners();
 
 const validFormProfile = new FormValidator(formProfile, configForm);
 validFormProfile.enableValidation();
