@@ -11,7 +11,6 @@ export default class Card {
     this.openPopupDeleteCard = openPopupDeleteCard;
     this._handleAddLike = handleAddLike;
     this._handleRevomeLike = handleRevomeLike;
-    // this._handleDeleteCard = handleDeleteCard;
 
     this._likeCounterSelector = selectors.cardLikeCounter;
     this._imageCardSelector = selectors.imageCard;
@@ -106,7 +105,7 @@ export default class Card {
 
     const deleteButton = this._element.querySelector(this._buttonDeleteSelector);
     deleteButton.addEventListener('click', () => {
-      this.openPopupDeleteCard(this._id, this._element);
+      this.openPopupDeleteCard(this._id);
     });
   }
 }

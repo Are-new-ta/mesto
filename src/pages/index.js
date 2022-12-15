@@ -30,6 +30,8 @@ const api = new Api({
   }
 });
 
+
+
 Promise.all([api.getUserProfile(), api.getInitialCards()])
   .then(([user, card]) => {
     userInfo.setUserInfo(user);
@@ -39,6 +41,7 @@ Promise.all([api.getUserProfile(), api.getInitialCards()])
   .catch((error) => {
     console.log(`Ошибка: ${error}`);
   });
+
 
 
 function handleCardClick(name, link) {
@@ -51,7 +54,7 @@ function generateCard(item) {
     selectors,
     userId,
     handleCardClick,
-    openPopupDeleteCard: (id, card) => {
+    openPopupDeleteCard: (id) => {
       popupDeleteCard.open();
       popupDeleteCard.setInfoCard(id, card);
 
@@ -61,29 +64,11 @@ function generateCard(item) {
             card.removeCard();
             popupDeleteCard.close();
           })
-        // .catch((error) => {
-        //   console.log(`Ошибка: ${error}`);
-        // });
+          .catch((error) => {
+            console.log(`Ошибка: ${error}`);
+          });
       })
-
-
     },
-
-    // //новый метод удаления карточки
-    // handleDeleteCard: (id) => {
-    //   popupDeleteCard.setSubmitAction(() => {
-    //     api.deleteCard(id)
-    //       .then(() => {
-    //         card.removeCard();
-    //         popupDeleteCard.close();
-    //       })
-    //       .catch((error) => {
-    //         console.log(`Ошибка: ${error}`);
-    //       });
-    //   })
-
-    // },
-
 
     handleAddLike: (id) => {
       api.addLikeCard(id)
